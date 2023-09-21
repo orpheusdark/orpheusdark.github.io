@@ -1,6 +1,5 @@
 # orpheusdark
 THIS IS MY PORTFOLIO WEBSITE
-Certainly! Here's some content to describe your portfolio website:
 
 ---
 
