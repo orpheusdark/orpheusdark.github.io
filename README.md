@@ -25,7 +25,7 @@ I am a versatile web developer and designer who thrives on creativity and innova
 
 **Why Choose Me?**
 
-- **Diverse Skill Set:** My expertise spans multiple domains, allowing me to offer a holistic approach to digital projects.
+- **Diverse Skill Set:** My expertise spans multiple domains, allowing me to offer a holistic approach to digital GALLERY.
 
 - **Creativity:** I bring a creative flair to every project, ensuring that the end result is not only functional but also visually striking.
 
@@ -35,7 +35,7 @@ I am a versatile web developer and designer who thrives on creativity and innova
 
 **Explore My Work**
 
-Feel free to browse through my portfolio to get a glimpse of my previous projects. Whether you're looking to collaborate on a new project or simply want to connect, I'd love to hear from you. Let's embark on a journey to bring your digital ideas to life!
+Feel free to browse through my portfolio to get a glimpse of my previous GALLERY. Whether you're looking to collaborate on a new project or simply want to connect, I'd love to hear from you. Let's embark on a journey to bring your digital ideas to life!
 
 **Contact Me**
 
