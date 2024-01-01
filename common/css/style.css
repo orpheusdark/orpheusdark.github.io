@@ -145,7 +145,7 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 
-.btn {                                                     00000000
+.btn {                                                    
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	   -moz-appearance: none;
@@ -1281,10 +1281,7 @@ li.current .sub-nav-links{
 	font-family: 'Calibre-Regular',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ","Meiryo",Osaka,"ＭＳ Ｐゴシック", "MS PGothic",sans-serif;
 	letter-spacing: 0.05em;
 }
-.sections [lang="ja"]{
-	font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ","Meiryo",Osaka,"ＭＳ Ｐゴシック", "MS PGothic",sans-serif;
-	letter-spacing: 0;
-}
+
 
 
 .icon{
