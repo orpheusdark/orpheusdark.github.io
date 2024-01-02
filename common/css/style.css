@@ -3334,10 +3334,10 @@ textarea.focus,
 
 
 /*
- profile/press
+ profile/about
 ---------------------------------------------------*/
 #profile .section.hide,
-#press .section.hide{
+#about .section.hide{
 	opacity:0;
 	-webkit-transform: translate(0, 50px);
 	   -moz-transform: translate(0, 50px);
@@ -3346,7 +3346,7 @@ textarea.focus,
 	        transform: translate(0, 50px);
 }
 #profile .section.show,
-#press .section.show{
+#about .section.show{
 	opacity:1;
 	-webkit-transform: translate(0, 0);
 	   -moz-transform: translate(0, 0);
@@ -3499,27 +3499,27 @@ textarea.focus,
 }
 
 /*
- press
+ about
 ---------------------------------------------------*/
 
-#press [lang="en"] h2,
-#press [lang="en"] h3,
-#press [lang="en"] h4,
-#press [lang="en"] .name,
-#press .tabled-th h2{
+#about [lang="en"] h2,
+#about [lang="en"] h3,
+#about [lang="en"] h4,
+#about [lang="en"] .name,
+#about .tabled-th h2{
 	font-family: 'Calibre-Bold',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ","Meiryo",Osaka,"ＭＳ Ｐゴシック", "MS PGothic",sans-serif;
 	letter-spacing:0.1em;
 }
-#press .tabled-td h3{
+#about .tabled-td h3{
 	font-family: 'Calibre-Bold',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ","Meiryo",Osaka,"ＭＳ Ｐゴシック", "MS PGothic",sans-serif;
 	letter-spacing:0.1em;
 }
 
-#press .catch{
+#about .catch{
 	margin-bottom:1em;
 }
 
-#press .section [lang="ja"] {
+#about .section [lang="ja"] {
 	font-size:83%;
 	line-height:2.2;
 }
