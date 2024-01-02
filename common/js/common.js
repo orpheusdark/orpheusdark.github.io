@@ -4,7 +4,7 @@
  * @author takaaki.koyama
  * ---
  * ---------------------------------------------
- * (c) baqemono.inc. all rights reserved.
+ * (c) baqemono. all rights reserved.
  * ---------------------------------------------
  */
  (function(){
