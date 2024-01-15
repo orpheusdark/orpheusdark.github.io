@@ -1,12 +1,4 @@
-/*
- * portfolio_detail.js
- * ---
- * @author takaaki.koyama
- * ---
- * ---------------------------------------------
- * (c) baqemono. all rights reserved.
- * ---------------------------------------------
- */
+
 (function($){
 
 
