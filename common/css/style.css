@@ -3029,6 +3029,7 @@ textarea.focus,
     font-weight: 700;
     line-height: 1;
     text-align: center;
+    color: #ffffff;
 
 
     -webkit-transform: translate(0, -20px);
@@ -4190,7 +4191,3 @@ textarea.focus,
 
 
 
-
-#site-name{
-    color: #ffffff;
-}
