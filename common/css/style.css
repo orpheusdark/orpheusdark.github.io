@@ -3222,7 +3222,7 @@ textarea.focus,
     top: 0;
     width: 80px;
     height: 2px;
-    background-color: #ffffff;
+    background-color: #ff0000;
 
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
