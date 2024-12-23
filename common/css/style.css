@@ -3029,9 +3029,6 @@ textarea.focus,
     font-weight: 700;
     line-height: 1;
     text-align: center;
-    color: #ffffff;
-
-
     -webkit-transform: translate(0, -20px);
     -moz-transform: translate(0, -20px);
     -ms-transform: translate(0, -20px);
@@ -3101,6 +3098,10 @@ textarea.focus,
     #top #site-name {
         font-size: 20px;
     }
+}
+
+#site-name {
+    color:white;
 }
 
 #top #images {
