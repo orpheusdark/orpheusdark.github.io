@@ -4187,3 +4187,10 @@ textarea.focus,
 
 /* mobile */
 @media only screen and (max-device-width: 480px) {}
+
+
+
+
+#site-name{
+    color: #ffffff;
+}
