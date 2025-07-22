@@ -475,7 +475,7 @@ section {
 
 /* About Section */
 .about-section {
-    /* background: var(--bg-secondary); */
+    background: var(--bg-secondary);
 }
 
 .about-content {
