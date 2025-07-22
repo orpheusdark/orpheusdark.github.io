@@ -184,6 +184,7 @@ function initializeApp() {
     // Hide loading screen
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
+        initializeCounters(); // Ensure counters are initialized after loading screen is hidden
     }, 1500);
 
     // Initialize components
@@ -199,9 +200,6 @@ function initializeApp() {
     loadSkills();
     loadCertifications();
     loadGallery();
-    
-    // Initialize counters
-    initializeCounters();
     
     // Event listeners
     setupEventListeners();
@@ -869,6 +867,7 @@ function setupEventListeners() {
             alert('Thank you for your message! I\'ll get back to you soon.');
         });
     }
+    initializeCounters(); // Ensure counters are initialized after all event listeners and content
 }
 
 // Utility Functions
