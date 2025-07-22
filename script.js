@@ -128,7 +128,7 @@ const galleryData = [
     },
     {
         id: 5,
-        src: "res/pitchtank-dtu.jpg",
+        src: "res/pitch tank-dtu.jpg",
         title: "Pitch Tank DTU - Presentation",
         description: "Presenting innovative solutions",
         category: "event"
