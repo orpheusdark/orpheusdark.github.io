@@ -1,134 +1,707 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>NIRANT CHAVDA</title>
-    <meta name="keywords" content="NIRANT CHAVDA, Portfolio" />
-    <meta name="description" content="Portfolio of NIRANT CHAVDA" />
-    <meta name="author" content="NIRANT CHAVDA" />
-    <meta property="og:title" content="NIRANT CHAVDA - Portfolio" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://nirantchavda.tech/index.html" />
-    <meta property="og:image" content="https://nirantchavda.tech/common/img/main.jpg" />
-    <meta property="og:site_name" content="NIRANT CHAVDA" />
-    <meta property="og:description" content="Explore the portfolio of NIRANT CHAVDA" />
-    <link rel="shortcut icon" href="common/img/main.ico" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="common/img/apple-touch-icon-144-precomposed.png">
-    <!--[if lt IE 9]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" href="common/css/style.css">
-    <!-- Google Analytics -->
-    <script src="common/js/libs.js" type="text/javascript" async defer></script>
-    <script src="common/js/common.js" type="text/javascript" async defer></script>
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-20499489-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirant Chavda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- ScrollReveal.js for animations -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Darker Slate Background */
+            color: #e2e8f0; /* Lighter Slate Text */
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .glass-effect {
+            background: rgba(15, 23, 42, 0.6); /* Semi-transparent background */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .accent-color {
+            color: #38bdf8; /* Sky Blue */
+        }
+        .accent-bg {
+            background-color: #38bdf8;
+        }
+        .section-heading {
+            text-align: center;
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #38bdf8;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        /* Animation classes for ScrollReveal */
+        .reveal {
+            visibility: hidden;
+        }
+        /* Image Gallery Lightbox Styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            line-height: 1;
+        }
+        /* Light mode overrides */
+        body.light {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        body.light .glass-effect {
+            background: rgba(255,255,255,0.7);
+            color: #0f172a;
+        }
+        body.light .section-heading,
+        body.light .font-bold,
+        body.light .text-white {
+            color: #0f172a !important;
+        }
+        body.light .accent-bg {
+            background-color: #0ea5e9 !important;
+            color: #fff !important;
+        }
+        body.light .bg-slate-900, body.light .bg-slate-900\/70, body.light .bg-slate-800, body.light .bg-slate-800\/50 {
+            background-color: #e2e8f0 !important;
+        }
+        body.light .text-slate-300, body.light .text-slate-400, body.light .text-slate-500 {
+            color: #334155 !important;
+        }
+        body.light .border-slate-800 {
+            border-color: #cbd5e1 !important;
+        }
+        /* Ensure all cards and text have good contrast in light mode */
+        body.light .bg-slate-800\/50, body.light .bg-slate-800 {
+            background-color: #fff !important;
+            color: #0f172a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        body.light .hover\:shadow-sky-500\/20:hover {
+            box-shadow: 0 4px 24px rgba(14,165,233,0.08) !important;
+        }
+        body.light .accent-color {
+            color: #0ea5e9 !important;
+        }
+        /* Section background overlays for visibility */
+        .bg-slate-900\/70 {
+            background-color: rgba(15,23,42,0.7);
+        }
+        body.light .bg-slate-900\/70 {
+            background-color: rgba(226,232,240,0.7) !important;
+        }
+        /* Ensure nav and footer are visible in both modes */
+        header, footer {
+            z-index: 2;
+        }
+        /* Animated background container */
+        #animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        /* Center headings in all screen sizes */
+        .section-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .fade-in {
+          opacity: 0;
+          transform: translateY(30px);
+          animation: fadeInUp 0.8s forwards;
+        }
+        @keyframes fadeInUp {
+          to {
+            opacity: 1;
+            transform: none;
+          }
+        }
+        @media (max-width: 640px) {
+          .gallery-item img { height: 160px !important; }
+        }
+    </style>
 </head>
+<body class="antialiased">
+    <!-- Animated Background Canvas -->
+    <div id="animated-bg"></div>
 
-<body id="nirantchavda" class="index">
-    <noscript>
-        <div id="noscript_message">It seems that JavaScript is disabled. Please enable JavaScript to display this site correctly.</div>
-    </noscript>
-    <div id="wrap">
-        <div id="header">
-            <div class="container">
-                <h1 id="logo"><a href="index.html" class="hover-line"><span>NIRANT CHAVDA</span></a></h1>
-                <div id="gnavi" class="nav">
-                    <div class="nav-btn">
-                        <a href="#gnavi-links">
-                            <span class="bars">
-                                <span class="bar"></span>
-                                <span class="bar"></span>
-                                <span class="bar"></span>
-                                <span class="bar"></span>
-                            </span>
-                            <span class="label"></span>
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-effect" style="z-index:1;position:relative;">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white">NIRANT CHAVDA</a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#certifications" class="hover:text-sky-400 transition-colors">Certifications</a>
+                <a href="#gallery" class="hover:text-sky-400 transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
+            </nav>
+            <!-- UPDATED: "Get In Touch" button now opens email client -->
+            <a href="mailto:orpheusdark@duck.com" class="hidden md:block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+                Get In Touch
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 hover:text-sky-400">About</a>
+            <a href="#experience" class="block py-2 hover:text-sky-400">Projects</a>
+            <a href="#skills" class="block py-2 hover:text-sky-400">Skills</a>
+            <a href="#certifications" class="block py-2 hover:text-sky-400">Certifications</a>
+            <a href="#gallery" class="block py-2 hover:text-sky-400">Gallery</a>
+            <a href="#contact" class="block py-2 hover:text-sky-400">Contact</a>
+        </div>
+    </header>
+
+    <main class="pt-24" style="z-index:1;position:relative;">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[90vh] flex items-center">
+            <div class="container mx-auto px-6 text-center">
+                <div class="reveal">
+                    <h1 class="text-4xl md:text-7xl font-bold text-white leading-tight mb-4">
+                        Nirant Chavda
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 accent-color font-semibold">
+                        Student of B.Tech in Computer Science & Engineering
+                    </p>
+                    <p class="max-w-3xl mx-auto text-lg text-slate-300 mb-12">
+                        A passionate and driven computer science student with a love for building innovative software and solving complex problems. Eager to apply my skills in real-world scenarios and contribute to impactful projects.
+                    </p>
+                    <div class="flex justify-center space-x-6">
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/orpheusdark/" target="_blank" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                            <i data-lucide="linkedin" class="w-8 h-8"></i>
+                        </a>
+                        <!-- GitHub with profile link -->
+                        <a href="https://github.com/orpheusdark" target="_blank" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                            <i data-lucide="github" class="w-8 h-8"></i>
+                        </a>
+                        <!-- Personal Website/Blog -->
+                        <a href="orpheusdark.github.io" target="_blank" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                            <i data-lucide="globe" class="w-8 h-8"></i>
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="contents-wrap">
-            <div id="contents">
-                <div id="top" class="content">
-                    <div id="stage">
-                        <div id="site-name" class="show">
-                            <span  style="transition-delay: 400ms;">N</span>
-                            <span  style="transition-delay: 400ms;">I</span>
-                            <span  style="transition-delay: 466.667ms;">R</span>
-                            <span  style="transition-delay: 66.6667ms;">A</span>
-                            <span  style="transition-delay: 266.667ms;">N</span>
-                            <span  style="transition-delay: 133.333ms;">T</span>
-                            <span  style="transition-delay: 166.667ms;">C</span>
-                            <span  style="transition-delay: 500ms;">H</span>
-                            <span  style="transition-delay: 400ms;">A</span>
-                            <span  style="transition-delay: 533.333ms;">V</span>
-                            <span  style="transition-delay: 300ms;">D</span>
-                            <span  style="transition-delay: 666.667ms;">A</span>
-                        </div>
-                        <ul id="images">
-                            <li><img src="common/img/1.jpg" alt="top01" /></li>
-                            <li><img src="common/img/2.jpg" alt="top02" /></li>
-                            <li><img src="common/img/3.jpg" alt="top03" /></li>
-                            <li><img src="common/img/4.jpg" alt="top04" /></li>
-                            <li><img src="common/img/5.jpg" alt="top05" /></li>
-                            <li><img src="common/img/6.jpg" alt="top06" /></li>
-                            <li><img src="common/img/7.jpg" alt="top07" /></li>
-                        </ul>
-                        <div id="scroll-info">
-                            <a href="profile/index.html">Profile</a>
-                            <div id="scroll-info-line"><div></div></div>
-                        </div>
-                    </div>
-                    <script src="common/js/index.js" type="text/javascript" async defer></script>
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-slate-900/70">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-heading">About Me</h2>
+                <div class="max-w-4xl mx-auto text-center text-lg text-slate-300 space-y-6">
+                    <p>
+                        I am currently pursuing my Bachelor of Technology in Computer Science and Engineering. From a young age, I've been fascinated by how technology shapes our world, which led me to dive deep into programming and software development. My coursework has provided me with a strong foundation in data structures, algorithms, and software engineering principles.
+                    </p>
+                    <p>
+                        I am a quick learner, a collaborative team player, and I'm always looking for opportunities to grow. Whether it's through hackathons, personal projects, or internships, I am constantly seeking challenges that push my boundaries. My goal is to leverage my skills to build technology that is not only functional but also user-friendly and impactful.
+                    </p>
                 </div>
             </div>
+        </section>
+
+        <!-- Experience/Projects Section -->
+        <section id="experience" class="py-24">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-heading">Key Projects & Internships</h2>
+                <div id="projects-list" class="max-w-4xl mx-auto"></div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 bg-slate-900/70">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-heading">Technical Skills</h2>
+                <div id="skills-list" class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center"></div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-24">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-heading">Certifications</h2>
+                <div id="certifications-list" class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8"></div>
+            </div>
+        </section>
+
+        <!-- Image Gallery Section -->
+        <section id="gallery" class="py-24 bg-slate-900/70">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-heading">Gallery</h2>
+                <div class="flex justify-center mb-8">
+                    <button class="gallery-filter accent-bg text-white px-4 py-2 rounded-lg mx-2" data-category="all">All</button>
+                    <button class="gallery-filter bg-slate-800 text-white px-4 py-2 rounded-lg mx-2" data-category="hackathon">Hackathons</button>
+                    <button class="gallery-filter bg-slate-800 text-white px-4 py-2 rounded-lg mx-2" data-category="project">Projects</button>
+                    <button class="gallery-filter bg-slate-800 text-white px-4 py-2 rounded-lg mx-2" data-category="workshop">Workshops</button>
+                </div>
+                <div id="gallery-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="section-heading">Get In Touch</h2>
+                <p class="max-w-2xl mx-auto text-lg text-slate-300 mb-8">
+                    I'm actively looking for internship opportunities and am always open to new collaborations. If you think I'd be a good fit for your team or just want to connect, please reach out!
+                </p>
+                <!-- UPDATED: "Say Hello" button now opens email client -->
+                <a href="mailto:orpheusdark@duck.com" class="inline-block accent-bg text-white font-bold text-lg py-4 px-8 rounded-lg hover:bg-sky-600 transition-colors transform hover:scale-105 duration-300">
+                    Say Hello
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900/50 border-t border-slate-800" style="z-index:1;position:relative;">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-400">
+            <p>&copy; 2025 NIRANT CHAVDA. All Rights Reserved.</p>
         </div>
+    </footer>
+
+    <!-- Lightbox Modal Structure -->
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="" alt="Enlarged achievement">
     </div>
-    <div id="menu">
-        <nav id="gnavi-links" class="nav-links">
-            <ul class="hover-line-links">
-                <li><a href="gallery/index.html"><span>GALLERY</span></a></li>
-                <li><a href="news"><span>NEWS</span></a></li>
-                <li><a href="profile"><span>PROFILE</span></a></li>
-                <li><a href="about"><span>ABOUT</span></a></li>
-                <li><a href="contact"><span>CONTACT</span></a></li>
-                <li><a href="https://www.linkedin.com/in/orpheusdark" class="external"><span>LINKEDIN</span></a></li>
-                <li><a href="https://tryhackme.com/p/orpheusdark26" class="external"><span>TRYHACKME</span></a></li>
-            </ul>
-        </nav>
+
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = Array.from(mobileMenu.getElementsByTagName('a'));
+        const navLinks = Array.from(document.querySelector('nav').getElementsByTagName('a'));
+        [...mobileMenuLinks, ...navLinks].forEach(link => {
+            link.addEventListener('click', () => {
+                // This part handles smooth scrolling for anchor links
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                // This closes the mobile menu after clicking a link
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // ScrollReveal Animations
+        ScrollReveal().reveal('.reveal', {
+            distance: '50px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            origin: 'bottom',
+            reset: false,
+            delay: 200,
+            viewFactor: 0.2
+        });
+
+        // Image Gallery Lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.classList.remove('hidden');
+                lightboxImage.src = item.src;
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.add('hidden');
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImage) {
+                closeLightbox();
+            }
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+    </script>
+
+    <script>
+// --- Dynamic Data ---
+const projects = [
+  {
+    title: "Personal Portfolio Website",
+    tech: "HTML, CSS, JavaScript, TailwindCSS",
+    date: "Spring 2025",
+    bullets: [
+      "Designed and developed a responsive personal portfolio.",
+      "Implemented interactive gallery and smooth scrolling.",
+      "Showcased projects, skills, and certifications dynamically."
+    ],
+    details: "This project demonstrates a modern, dynamic portfolio with theme toggling, filterable gallery, and more."
+  },
+  {
+    title: "AI Chatbot Internship",
+    tech: "Python, Flask, OpenAI API",
+    date: "Fall 2023",
+    bullets: [
+      "Built a conversational AI chatbot for customer support.",
+      "Integrated NLP and sentiment analysis.",
+      "Deployed on cloud infrastructure."
+    ],
+    details: "Worked with a team to deliver a scalable AI solution for real-world business needs."
+  }
+];
+const skills = [
+  { name: "JavaScript", icon: "braces", level: 90 },
+  { name: "Python", icon: "code", level: 85 },
+  { name: "Java", icon: "leaf", level: 80 },
+  { name: "SQL", icon: "database", level: 75 },
+  { name: "Git & GitHub", icon: "git-branch-plus", level: 80 }
+];
+const certifications = [
+  {
+    name: "Python for Everybody",
+    org: "University of Michigan (Coursera)",
+    icon: "award"
+  },
+  {
+    name: "Full Stack Web Development",
+    org: "Udemy",
+    icon: "award"
+  }
+];
+// Update the gallery data array in the dynamic script:
+const gallery = [
+  {
+    src: "./tedx_nit_hamirpur.jpg",
+    alt: "TEDx NIT Hamirpur 2025",
+    title: "TEDx NIT Hamirpur",
+    location: "National Institute of Technology Hamirpur",
+    year: "2025",
+    category: "event"
+  },
+  {
+    src: "./parul_hackathon.jpg",
+    alt: "Vadodara Hackathon 4.0 2023",
+    title: "Vadodara Hackathon 4.0",
+    location: "Parul Innovation and Entrepreneurship Research Centre (PIERC), Parul University",
+    year: "2023",
+    category: "hackathon"
+  },
+  {
+    src: "./parul_team.jpg",
+    alt: "Smart India Hackathon Parul University 2023",
+    title: "Smart India Hackathon (Internal)",
+    location: "Parul University",
+    year: "2023",
+    category: "hackathon"
+  },
+  {
+    src: "./pitch_tank.jpg",
+    alt: "Pitch Tank DTU 2025",
+    title: "Pitch Tank",
+    location: "Delhi Technological University",
+    year: "2025",
+    category: "event"
+  },
+  {
+    src: "./creato_hackathon_2024.jpg",
+    alt: "Creato Hackathon BBIT 2024",
+    title: "Creato Hackathon",
+    location: "B and B Institute of Technology (BBIT), Vallabh Vidhyanagar, Anand",
+    year: "2024",
+    category: "hackathon"
+  },
+  {
+    src: "./creato_hackathon_2023.jpg",
+    alt: "Creato Hackathon BBIT 2023",
+    title: "CREATO HACKATHON 2023",
+    location: "B and B Institute of Technology (BBIT), Vallabh Vidhyanagar, Anand",
+    year: "2023",
+    category: "hackathon"
+  },
+  {
+    src: "./bizshasn.jpg",
+    alt: "BizShasn: A Startup Ideathon KJ Somaiya 2025",
+    title: "BizShasn: A Startup Ideathon",
+    location: "KJ Somaiya College of Engineering, Vidyavihar, Mumbai",
+    year: "2025",
+    category: "event"
+  }
+];
+
+// --- Dynamic Rendering Functions ---
+function renderProjects() {
+  const container = document.getElementById('projects-list');
+  container.innerHTML = projects.map((project, idx) => `
+    <div class="relative pl-8 sm:pl-12 py-6 group">
+      <div class="absolute left-2 sm:left-4 top-0 h-full w-0.5 bg-slate-700"></div>
+      <div class="absolute left-0 sm:left-2 top-8 w-4 h-4 bg-slate-700 rounded-full border-4 border-slate-900 group-hover:bg-sky-500 transition-colors"></div>
+      <h3 class="text-xl font-bold text-white">${project.title}</h3>
+      <p class="text-sky-400 font-semibold mb-1">${project.tech}</p>
+      <p class="text-sm text-slate-400 mb-4">${project.date}</p>
+      <ul class="list-disc list-inside text-slate-300 space-y-2">
+        ${project.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+      </ul>
+      <button class="expand-btn accent-bg text-white px-3 py-1 rounded mt-2" data-idx="${idx}">More Details</button>
+      <div class="project-details hidden mt-2 text-slate-400">${project.details}</div>
     </div>
-    <div id="footer">
-        <div class="container">
-            <div id="copyright" class="wfont">&copy; NIRANT CHAVDA All Rights Reserved.</div>
-        </div>
+  `).join('');
+  // Add expand/collapse logic
+  container.querySelectorAll('.expand-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const idx = this.getAttribute('data-idx');
+      const details = container.querySelectorAll('.project-details')[idx];
+      details.classList.toggle('hidden');
+      this.textContent = details.classList.contains('hidden') ? 'More Details' : 'Less Details';
+    });
+  });
+}
+function animateCounter(el, target) {
+  let count = 0;
+  const step = Math.ceil(target / 40);
+  function update() {
+    count += step;
+    if (count > target) count = target;
+    el.textContent = count + '%';
+    if (count < target) requestAnimationFrame(update);
+  }
+  update();
+}
+function renderSkills() {
+  const container = document.getElementById('skills-list');
+  container.innerHTML = skills.map((skill, idx) => `
+    <div class="bg-slate-800/50 rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-sky-500/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+      <i data-lucide="${skill.icon}" class="w-10 h-10 mb-2 accent-color"></i>
+      <span class="font-semibold">${skill.name}</span>
+      <span class="counter text-sky-400 font-bold text-lg" id="counter-${idx}">0%</span>
     </div>
-    <!-- Loader -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
+  `).join('');
+  // Animate counters
+  skills.forEach((skill, idx) => {
+    const el = document.getElementById(`counter-${idx}`);
+    animateCounter(el, skill.level);
+  });
+  lucide.createIcons();
+}
+function renderCertifications() {
+  const container = document.getElementById('certifications-list');
+  container.innerHTML = certifications.map(cert => `
+    <div class="bg-slate-800/50 rounded-lg p-6 flex items-center space-x-4 hover:shadow-sky-500/20 hover:shadow-lg transition-all duration-300 hover:scale-105">
+      <div class="flex-shrink-0">
+        <i data-lucide="${cert.icon}" class="w-12 h-12 accent-color"></i>
+      </div>
+      <div>
+        <h3 class="font-bold text-white text-lg">${cert.name}</h3>
+        <p class="text-slate-400">${cert.org}</p>
+      </div>
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+function renderGallery(filter = 'all') {
+  const container = document.getElementById('gallery-list');
+  let filtered = filter === 'all' ? gallery : gallery.filter(item => item.category === filter);
+  container.innerHTML = filtered.map(item => `
+    <div class="gallery-item group transition-transform duration-300 hover:scale-105 fade-in rounded-lg overflow-hidden bg-slate-800/50 flex flex-col items-center">
+      <img src="${item.src}" alt="${item.alt}" class="rounded-lg w-full h-56 object-cover object-center mb-3 transition-transform duration-300 group-hover:scale-110" loading="lazy">
+      <div class="p-2 text-center">
+        <h4 class="font-bold text-white text-lg mb-1">${item.title}</h4>
+        <p class="text-slate-400 text-sm mb-1">${item.location}</p>
+        <span class="accent-color font-semibold">${item.year}</span>
+      </div>
+    </div>
+  `).join('');
+}
+// --- Gallery Filter Buttons ---
+document.addEventListener('DOMContentLoaded', () => {
+  renderProjects();
+  renderSkills();
+  renderCertifications();
+  renderGallery();
+  // Gallery filter
+  document.querySelectorAll('.gallery-filter').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('accent-bg'));
+      this.classList.add('accent-bg');
+      renderGallery(this.getAttribute('data-category'));
+    });
+  });
+});
+// --- Theme Toggle ---
+const themeToggle = document.createElement('button');
+themeToggle.id = 'theme-toggle';
+themeToggle.className = 'ml-4 text-white';
+themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+document.querySelector('header .container').appendChild(themeToggle);
+function setTheme(theme) {
+  if (theme === 'light') {
+    document.body.classList.add('light');
+    themeToggle.innerHTML = '<i data-lucide="sun"></i>';
+  } else {
+    document.body.classList.remove('light');
+    themeToggle.innerHTML = '<i data-lucide="moon"></i>';
+  }
+  lucide.createIcons();
+}
+function getTheme() {
+  return localStorage.getItem('theme') || 'dark';
+}
+themeToggle.addEventListener('click', () => {
+  const current = getTheme();
+  const next = current === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', next);
+  setTheme(next);
+});
+setTheme(getTheme());
+// --- Animated Particles Background ---
+(function animateParticles() {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'bg-canvas';
+    const bgDiv = document.getElementById('animated-bg');
+    bgDiv.appendChild(canvas);
+    let ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    // Particle system
+    const numParticles = Math.floor((w * h) / 2500);
+    let particles = [];
+    function randomVel() {
+        return (Math.random() - 0.5) * 0.7;
+    }
+    function createParticle() {
+        return {
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: randomVel(),
+            vy: randomVel(),
+            r: 1.5 + Math.random() * 2.5,
+            alpha: 0.5 + Math.random() * 0.5
+        };
+    }
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(createParticle());
+        }
+    }
+    initParticles();
+    window.addEventListener('resize', () => {
+        initParticles();
+    });
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        // Draw lines between close particles
+        for (let i = 0; i < particles.length; i++) {
+            let p1 = particles[i];
+            for (let j = i + 1; j < particles.length; j++) {
+                let p2 = particles[j];
+                let dx = p1.x - p2.x, dy = p1.y - p2.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 100) {
+                    ctx.save();
+                    ctx.globalAlpha = 0.1;
+                    ctx.strokeStyle = '#38bdf8';
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }
+        // Draw particles
+        for (let p of particles) {
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+            ctx.fillStyle = '#38bdf8';
+            ctx.shadowColor = '#38bdf8';
+            ctx.shadowBlur = 8;
+            ctx.fill();
+            ctx.restore();
+        }
+        // Move particles
+        for (let p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > w) p.vx *= -1;
+            if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+    </script>
 
 </body>
-
 </html>
