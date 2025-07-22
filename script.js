@@ -771,7 +771,7 @@ function loadGallery() {
         
         galleryGrid.innerHTML = filteredItems.map(item => `
             <div class="gallery-item scale-in" data-category="${item.category}">
-                <img src="${item.src}" alt="${item.title}" loading="lazy">
+                <img src="${encodeURI(item.src)}" alt="${item.title}" loading="lazy">
                 <div class="gallery-overlay">
                     <h4 class="gallery-title">${item.title}</h4>
                     <p class="gallery-description">${item.description}</p>
