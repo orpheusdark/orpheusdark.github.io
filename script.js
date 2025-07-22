@@ -8,7 +8,7 @@ const projectsData = [
         tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
         github: "https://github.com/orpheusdark",
         demo: "https://orpheusdark.github.io",
-        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800"
+        image: "res/creato2024.jpg"
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ const projectsData = [
         tech: ["Python", "Flask", "NLP", "Machine Learning"],
         github: "https://github.com/orpheusdark",
         demo: "#",
-        image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800"
+        image: "res/tedx_nithamirpur.jpg"
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ const projectsData = [
         tech: ["React", "Node.js", "MongoDB", "Express"],
         github: "https://github.com/orpheusdark",
         demo: "#",
-        image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800"
+        image: "res/pitchtank-dtu.jpg"
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const projectsData = [
         tech: ["React Native", "Firebase", "Redux", "AsyncStorage"],
         github: "https://github.com/orpheusdark",
         demo: "#",
-        image: "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=800"
+        image: "res/vadoadara_hachathon.jpg"
     }
 ];
 
@@ -100,45 +100,59 @@ const certificationsData = [
 const galleryData = [
     {
         id: 1,
-        src: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800",
-        title: "Hackathon Winner",
-        description: "First place at University Hackathon 2024",
+        src: "res/creato2024.jpg",
+        title: "Creato 2024",
+        description: "Innovation and creativity showcase event",
         category: "hackathon"
     },
     {
         id: 2,
-        src: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
-        title: "Tech Conference",
-        description: "Speaking at Developer Conference 2024",
-        category: "event"
-    },
-    {
-        id: 3,
-        src: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
-        title: "Workshop Session",
-        description: "Leading a coding workshop for beginners",
-        category: "workshop"
-    },
-    {
-        id: 4,
-        src: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
-        title: "Team Project",
-        description: "Collaborative project presentation",
+        src: "res/creato2024.1.jpg",
+        title: "Creato 2024 - Team Event",
+        description: "Collaborative innovation session",
         category: "hackathon"
     },
     {
+        id: 3,
+        src: "res/creato2023.jpg",
+        title: "Creato 2023",
+        description: "Previous year's creative showcase",
+        category: "hackathon"
+    },
+    {
+        id: 4,
+        src: "res/pitchtank-dtu.jpg",
+        title: "Pitch Tank DTU",
+        description: "Entrepreneurship and startup pitching event",
+        category: "event"
+    },
+    {
         id: 5,
-        src: "https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=800",
-        title: "Networking Event",
-        description: "Industry networking meetup",
+        src: "res/pitch tank-dtu.jpg",
+        title: "Pitch Tank DTU - Presentation",
+        description: "Presenting innovative solutions",
         category: "event"
     },
     {
         id: 6,
-        src: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=800",
-        title: "Code Review",
-        description: "Peer programming session",
-        category: "workshop"
+        src: "res/tedx_nithamirpur.jpg",
+        title: "TEDx NIT Hamirpur",
+        description: "Speaking at TEDx event",
+        category: "event"
+    },
+    {
+        id: 7,
+        src: "res/vadoadara_hachathon.jpg",
+        title: "Vadodara Hackathon",
+        description: "Participating in city-wide hackathon",
+        category: "hackathon"
+    },
+    {
+        id: 8,
+        src: "res/vadoadra_hacahthon.jpg",
+        title: "Vadodara Hackathon - Team",
+        description: "Team collaboration during hackathon",
+        category: "hackathon"
     }
 ];
 
@@ -199,7 +213,10 @@ function initializeParticles() {
     const ctx = canvas.getContext('2d');
     
     let particles = [];
+    let waves = [];
+    let floatingShapes = [];
     let animationId;
+    let time = 0;
     
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -213,31 +230,162 @@ function initializeParticles() {
             vx: (Math.random() - 0.5) * 0.5,
             vy: (Math.random() - 0.5) * 0.5,
             radius: Math.random() * 2 + 1,
-            opacity: Math.random() * 0.5 + 0.2
+            opacity: Math.random() * 0.6 + 0.2,
+            color: Math.random() > 0.5 ? 'rgba(0, 212, 255, ' : 'rgba(138, 43, 226, ',
+            pulseSpeed: Math.random() * 0.02 + 0.01,
+            pulsePhase: Math.random() * Math.PI * 2
+        };
+    }
+    
+    function createWave() {
+        return {
+            y: Math.random() * canvas.height,
+            amplitude: Math.random() * 50 + 20,
+            frequency: Math.random() * 0.02 + 0.005,
+            speed: Math.random() * 0.02 + 0.01,
+            opacity: Math.random() * 0.3 + 0.1,
+            color: Math.random() > 0.5 ? '0, 212, 255' : '138, 43, 226'
+        };
+    }
+    
+    function createFloatingShape() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            size: Math.random() * 30 + 10,
+            rotation: 0,
+            rotationSpeed: (Math.random() - 0.5) * 0.02,
+            opacity: Math.random() * 0.2 + 0.05,
+            shape: Math.floor(Math.random() * 3), // 0: circle, 1: triangle, 2: square
+            color: Math.random() > 0.5 ? '0, 212, 255' : '138, 43, 226'
         };
     }
     
     function initParticles() {
         particles = [];
-        const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
+        waves = [];
+        floatingShapes = [];
+        
+        const particleCount = Math.min(120, Math.floor((canvas.width * canvas.height) / 12000));
+        const waveCount = 3;
+        const shapeCount = 8;
         
         for (let i = 0; i < particleCount; i++) {
             particles.push(createParticle());
         }
+        
+        for (let i = 0; i < waveCount; i++) {
+            waves.push(createWave());
+        }
+        
+        for (let i = 0; i < shapeCount; i++) {
+            floatingShapes.push(createFloatingShape());
+        }
     }
     
     function updateParticles() {
+        time += 0.016; // ~60fps
+        
+        // Update particles
         particles.forEach(particle => {
             particle.x += particle.vx;
             particle.y += particle.vy;
             
+            // Add slight gravitational pull towards center
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const dx = centerX - particle.x;
+            const dy = centerY - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance > 0) {
+                particle.vx += (dx / distance) * 0.0001;
+                particle.vy += (dy / distance) * 0.0001;
+            }
+            
+            // Bounce off edges with some energy loss
             if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
             if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+            
+            // Keep particles in bounds
+            particle.x = Math.max(0, Math.min(canvas.width, particle.x));
+            particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+            
+            // Update pulse phase
+            particle.pulsePhase += particle.pulseSpeed;
+        });
+        
+        // Update floating shapes
+        floatingShapes.forEach(shape => {
+            shape.x += shape.vx;
+            shape.y += shape.vy;
+            shape.rotation += shape.rotationSpeed;
+            
+            // Wrap around edges
+            if (shape.x < -shape.size) shape.x = canvas.width + shape.size;
+            if (shape.x > canvas.width + shape.size) shape.x = -shape.size;
+            if (shape.y < -shape.size) shape.y = canvas.height + shape.size;
+            if (shape.y > canvas.height + shape.size) shape.y = -shape.size;
+        });
+    }
+    
+    function drawWaves() {
+        waves.forEach(wave => {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(${wave.color}, ${wave.opacity})`;
+            ctx.lineWidth = 2;
+            
+            for (let x = 0; x <= canvas.width; x += 5) {
+                const y = wave.y + Math.sin((x * wave.frequency) + (time * wave.speed)) * wave.amplitude;
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+        });
+    }
+    
+    function drawFloatingShapes() {
+        floatingShapes.forEach(shape => {
+            ctx.save();
+            ctx.translate(shape.x, shape.y);
+            ctx.rotate(shape.rotation);
+            ctx.fillStyle = `rgba(${shape.color}, ${shape.opacity})`;
+            
+            switch (shape.shape) {
+                case 0: // Circle
+                    ctx.beginPath();
+                    ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    break;
+                case 1: // Triangle
+                    ctx.beginPath();
+                    ctx.moveTo(0, -shape.size / 2);
+                    ctx.lineTo(-shape.size / 2, shape.size / 2);
+                    ctx.lineTo(shape.size / 2, shape.size / 2);
+                    ctx.closePath();
+                    ctx.fill();
+                    break;
+                case 2: // Square
+                    ctx.fillRect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
+                    break;
+            }
+            ctx.restore();
         });
     }
     
     function drawParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw waves first (background layer)
+        drawWaves();
+        
+        // Draw floating shapes
+        drawFloatingShapes();
         
         // Draw connections
         particles.forEach((particle, i) => {
@@ -246,9 +394,10 @@ function initializeParticles() {
                 const dy = particle.y - otherParticle.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                if (distance < 100) {
+                if (distance < 120) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(0, 212, 255, ${0.1 * (1 - distance / 100)})`;
+                    const opacity = 0.15 * (1 - distance / 120);
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
                     ctx.lineWidth = 1;
                     ctx.moveTo(particle.x, particle.y);
                     ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -259,9 +408,19 @@ function initializeParticles() {
         
         // Draw particles
         particles.forEach(particle => {
+            const pulseSize = 1 + Math.sin(particle.pulsePhase) * 0.3;
+            const currentRadius = particle.radius * pulseSize;
+            const currentOpacity = particle.opacity * (0.8 + Math.sin(particle.pulsePhase) * 0.2);
+            
             ctx.beginPath();
-            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(0, 212, 255, ${particle.opacity})`;
+            ctx.arc(particle.x, particle.y, currentRadius, 0, Math.PI * 2);
+            ctx.fillStyle = particle.color + currentOpacity + ')';
+            ctx.fill();
+            
+            // Add glow effect
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, currentRadius * 2, 0, Math.PI * 2);
+            ctx.fillStyle = particle.color + (currentOpacity * 0.1) + ')';
             ctx.fill();
         });
     }
@@ -489,6 +648,23 @@ function loadProjects() {
         
         projectsGrid.innerHTML = filteredProjects.map(project => `
             <div class="project-card fade-in" data-category="${project.category}">
+                <div class="project-image">
+                    <img src="${project.image}" alt="${project.title}" loading="lazy">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="${project.github}" target="_blank" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="${project.demo}" target="_blank" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-header">
                     <div>
                         <h3 class="project-title">${project.title}</h3>
@@ -498,20 +674,6 @@ function loadProjects() {
                 <p class="project-description">${project.description}</p>
                 <div class="project-tech">
                     ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                </div>
-                <div class="project-links">
-                    <a href="${project.github}" target="_blank" class="project-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="${project.demo}" target="_blank" class="project-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
-                        </svg>
-                        Demo
-                    </a>
                 </div>
             </div>
         `).join('');
@@ -624,6 +786,18 @@ function loadGallery() {
                 
                 openLightbox(img.src, title, description);
             });
+        });
+        
+        // Re-observe new elements for animation
+        document.querySelectorAll('.gallery-item.scale-in').forEach(el => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            });
+            observer.observe(el);
         });
     }
     
