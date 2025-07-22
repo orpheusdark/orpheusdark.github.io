@@ -141,12 +141,22 @@ body {
 /* Particle Canvas */
 .particle-canvas {
     position: fixed;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
     pointer-events: none;
+}
+
+/* Section backgrounds transparent for animation */
+.about-section,
+.gallery-section,
+.projects-section,
+.skills-section,
+.certifications-section,
+.contact-section {
+    background: transparent !important;
 }
 
 /* Navigation */
