@@ -1064,3 +1064,58 @@ textarea:focus {
 .error-message {
   @apply bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-4 rounded-lg mb-4;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e42, #3b82f6);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease-in-out infinite;
+  text-shadow: 0 4px 24px rgba(59,130,246,0.15);
+}
+.hero-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3em;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6, #f59e42, #ec4899);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s linear infinite;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 12px rgba(236,72,153,0.12);
+}
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s linear infinite;
+  margin-bottom: 0.5em;
+}
+.section-subtitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6, #ec4899);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 6s linear infinite;
+  margin-bottom: 1.2em;
+}
+@media (max-width: 640px) {
+  .hero-title { font-size: 2.2rem; }
+  .section-title { font-size: 1.5rem; }
+  .section-subtitle { font-size: 1.1rem; }
+}
