@@ -575,24 +575,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", debouncedScrollHandler)
 
-  // Typewriter effect for all headings/subheadings
-  const typewriterEls = document.querySelectorAll('.typewriter');
-  typewriterEls.forEach(function(el) {
-    const text = el.getAttribute('data-text');
-    el.textContent = '';
-    let i = 0;
-    function type() {
-      if (i <= text.length) {
-        el.textContent = text.substring(0, i);
-        i++;
-        setTimeout(type, 40);
-      } else {
-        el.textContent = text;
-      }
-    }
-    type();
-  });
-
   console.log("Portfolio website initialized successfully!")
 })
 
