@@ -1076,6 +1076,7 @@ textarea:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: #3b82f6; /* fallback for unsupported browsers */
   animation: gradient-shift 5s ease-in-out infinite;
   text-shadow: 0 4px 24px rgba(59,130,246,0.15);
 }
@@ -1088,6 +1089,7 @@ textarea:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: #ec4899; /* fallback for unsupported browsers */
   animation: gradient-shift 3s linear infinite;
   letter-spacing: 0.03em;
   text-shadow: 0 2px 12px rgba(236,72,153,0.12);
