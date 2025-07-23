@@ -40,11 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Typing Animation
   const typedTextElement = document.getElementById("typed-text")
   const textArray = [
-    "Diploma Student",
+    "B.Tech CSE Student",
     "Indie Web Developer",
     "Hackathon Enthusiast",
     "Problem Solver",
     "Tech Innovator",
+    "Full Stack Developer",
+    "AI Enthusiast"
   ]
 
   let textIndex = 0
@@ -82,14 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Particles Animation
   function createParticles() {
     const particlesContainer = document.querySelector(".particles-container")
-    const particleCount = 50
+    const particleCount = window.innerWidth < 768 ? 30 : 80
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement("div")
       particle.classList.add("particle")
 
       // Random size
-      const size = Math.random() * 4 + 2
+      const size = Math.random() * 6 + 2
       particle.style.width = size + "px"
       particle.style.height = size + "px"
 
@@ -98,14 +100,56 @@ document.addEventListener("DOMContentLoaded", () => {
       particle.style.top = Math.random() * 100 + "%"
 
       // Random animation delay
-      particle.style.animationDelay = Math.random() * 6 + "s"
-      particle.style.animationDuration = Math.random() * 3 + 3 + "s"
+      particle.style.animationDelay = Math.random() * 8 + "s"
+      particle.style.animationDuration = Math.random() * 4 + 6 + "s"
 
       particlesContainer.appendChild(particle)
     }
   }
 
   createParticles()
+  
+  // Create floating shapes
+  function createFloatingShapes() {
+    const shapesContainer = document.querySelector(".floating-shapes")
+    const shapeCount = window.innerWidth < 768 ? 3 : 6
+    
+    for (let i = 0; i < shapeCount; i++) {
+      const shape = document.createElement("div")
+      shape.classList.add("floating-shape")
+      
+      // Random shape type
+      const shapeType = Math.random() > 0.5 ? 'circle' : 'square'
+      const size = Math.random() * 100 + 50
+      
+      if (shapeType === 'circle') {
+        shape.style.borderRadius = '50%'
+      } else {
+        shape.style.borderRadius = '20%'
+        shape.style.transform = 'rotate(45deg)'
+      }
+      
+      shape.style.width = size + "px"
+      shape.style.height = size + "px"
+      shape.style.position = 'absolute'
+      shape.style.background = `linear-gradient(45deg, 
+        rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1),
+        rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)
+      )`
+      
+      // Random position
+      shape.style.left = Math.random() * 100 + "%"
+      shape.style.top = Math.random() * 100 + "%"
+      
+      // Random animation
+      shape.style.animation = `float-shapes ${Math.random() * 10 + 15}s ease-in-out infinite`
+      shape.style.animationDelay = Math.random() * 5 + "s"
+      
+      shapesContainer.appendChild(shape)
+    }
+  }
+  
+  createFloatingShapes()
 
   // Smooth Scrolling for Navigation Links
   const navLinks = document.querySelectorAll('a[href^="#"]')
@@ -245,6 +289,10 @@ document.addEventListener("DOMContentLoaded", () => {
             progressBar.style.width = "0%"
             setTimeout(() => {
               progressBar.style.width = width
+              // Add shimmer effect after animation
+              setTimeout(() => {
+                progressBar.classList.add('shimmer-effect')
+              }, 1000)
             }, 200)
           }
         })
@@ -256,6 +304,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   animateSkillBars()
+  
+  // Enhanced scroll animations
+  function addScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.skill-category, .project-card, .social-link')
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards'
+          entry.target.style.animationDelay = Math.random() * 0.3 + 's'
+        }
+      })
+    }, { threshold: 0.1 })
+    
+    animatedElements.forEach(el => scrollObserver.observe(el))
+  }
+  
+  addScrollAnimations()
 
   // Intersection Observer for Fade In Animation
   const observerOptions = {
@@ -324,13 +390,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const socialLinks = document.querySelectorAll(".social-link")
   socialLinks.forEach((link) => {
     link.addEventListener("mouseenter", function () {
-      this.style.transform = "scale(1.1) rotate(5deg)"
+      this.style.transform = "scale(1.2) rotate(10deg)"
+      this.style.boxShadow = "0 8px 25px rgba(59, 130, 246, 0.3)"
     })
 
     link.addEventListener("mouseleave", function () {
       this.style.transform = "scale(1) rotate(0deg)"
+      this.style.boxShadow = ""
     })
   })
+  
+  // Add parallax effect to hero section
+  function addParallaxEffect() {
+    const hero = document.getElementById('home')
+    const particles = document.querySelector('.particles-container')
+    const shapes = document.querySelector('.floating-shapes')
+    
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset
+      const rate = scrolled * -0.5
+      const rate2 = scrolled * -0.3
+      
+      if (particles) {
+        particles.style.transform = `translateY(${rate}px)`
+      }
+      if (shapes) {
+        shapes.style.transform = `translateY(${rate2}px)`
+      }
+    })
+  }
+  
+  addParallaxEffect()
+  
+  // Add mouse movement effect to hero
+  function addMouseEffect() {
+    const hero = document.getElementById('home')
+    const particles = document.querySelector('.particles-container')
+    
+    hero.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100
+      const y = (e.clientY / window.innerHeight) * 100
+      
+      if (particles) {
+        particles.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`
+      }
+    })
+  }
+  
+  addMouseEffect()
 
   // Keyboard navigation support
   document.addEventListener("keydown", (e) => {
