@@ -1071,28 +1071,34 @@ textarea:focus {
   font-size: 4rem;
   font-weight: 900;
   line-height: 1.1;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e42, #3b82f6);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #3b82f6; /* fallback for unsupported browsers */
-  animation: gradient-shift 5s ease-in-out infinite;
+  color: #3b82f6;
   text-shadow: 0 4px 24px rgba(59,130,246,0.15);
 }
 .hero-name {
   font-family: 'Pacifico', cursive;
   font-size: 1.3em;
   font-weight: 900;
-  background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6, #f59e42, #ec4899);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #ec4899; /* fallback for unsupported browsers */
-  animation: gradient-shift 3s linear infinite;
+  color: #ec4899;
   letter-spacing: 0.03em;
   text-shadow: 0 2px 12px rgba(236,72,153,0.12);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-title {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e42, #3b82f6);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 5s ease-in-out infinite;
+  }
+  .hero-name {
+    background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6, #f59e42, #ec4899);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s linear infinite;
+  }
 }
 .section-title {
   font-size: 2.8rem;
