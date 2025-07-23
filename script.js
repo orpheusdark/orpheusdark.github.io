@@ -151,6 +151,109 @@ document.addEventListener("DOMContentLoaded", () => {
   
   createFloatingShapes()
 
+  // Create section-specific animations
+  function createSectionAnimations() {
+    // Add more geometric patterns for about section
+    const aboutBg = document.querySelector('.about-bg')
+    if (aboutBg) {
+      for (let i = 0; i < 3; i++) {
+        const pattern = document.createElement('div')
+        pattern.classList.add('geometric-pattern')
+        pattern.style.top = Math.random() * 80 + 10 + '%'
+        pattern.style.left = Math.random() * 80 + 10 + '%'
+        pattern.style.animationDelay = Math.random() * 15 + 's'
+        aboutBg.appendChild(pattern)
+      }
+    }
+
+    // Add more floating orbs for skills section
+    const skillsBg = document.querySelector('.skills-bg')
+    if (skillsBg) {
+      for (let i = 0; i < 2; i++) {
+        const orb = document.createElement('div')
+        orb.classList.add('floating-orb')
+        orb.style.width = Math.random() * 100 + 80 + 'px'
+        orb.style.height = orb.style.width
+        orb.style.top = Math.random() * 70 + 15 + '%'
+        orb.style.left = Math.random() * 70 + 15 + '%'
+        orb.style.animationDelay = Math.random() * 12 + 's'
+        
+        const colors = [
+          'radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent)',
+          'radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent)',
+          'radial-gradient(circle, rgba(236, 72, 153, 0.1), transparent)',
+          'radial-gradient(circle, rgba(147, 51, 234, 0.1), transparent)'
+        ]
+        orb.style.background = colors[Math.floor(Math.random() * colors.length)]
+        skillsBg.appendChild(orb)
+      }
+    }
+
+    // Add more code rain elements
+    const projectsBg = document.querySelector('.projects-bg')
+    if (projectsBg) {
+      const codeSnippets = [
+        'useState()',
+        'useEffect()',
+        'async/await',
+        'fetch()',
+        'map()',
+        'filter()',
+        'reduce()',
+        'Promise.all()',
+        'setTimeout()',
+        'addEventListener()'
+      ]
+      
+      for (let i = 0; i < 5; i++) {
+        const rain = document.createElement('div')
+        rain.classList.add('code-rain')
+        rain.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)]
+        rain.style.left = Math.random() * 90 + 5 + '%'
+        rain.style.animationDelay = Math.random() * 8 + 's'
+        rain.style.animationDuration = Math.random() * 4 + 6 + 's'
+        projectsBg.appendChild(rain)
+      }
+    }
+
+    // Add more network nodes and lines
+    const internshipBg = document.querySelector('.internship-bg')
+    if (internshipBg) {
+      for (let i = 0; i < 3; i++) {
+        const node = document.createElement('div')
+        node.classList.add('network-node')
+        node.style.top = Math.random() * 80 + 10 + '%'
+        node.style.left = Math.random() * 80 + 10 + '%'
+        node.style.animationDelay = Math.random() * 3 + 's'
+        internshipBg.appendChild(node)
+        
+        const line = document.createElement('div')
+        line.classList.add('network-line')
+        line.style.top = Math.random() * 80 + 10 + '%'
+        line.style.left = Math.random() * 70 + 15 + '%'
+        line.style.width = Math.random() * 100 + 100 + 'px'
+        line.style.transform = `rotate(${Math.random() * 360}deg)`
+        line.style.animationDelay = Math.random() * 4 + 's'
+        internshipBg.appendChild(line)
+      }
+    }
+
+    // Add more sparkles for achievements
+    const achievementsBg = document.querySelector('.achievements-bg')
+    if (achievementsBg) {
+      for (let i = 0; i < 10; i++) {
+        const sparkle = document.createElement('div')
+        sparkle.classList.add('sparkle')
+        sparkle.style.top = Math.random() * 90 + 5 + '%'
+        sparkle.style.left = Math.random() * 90 + 5 + '%'
+        sparkle.style.animationDelay = Math.random() * 2 + 's'
+        achievementsBg.appendChild(sparkle)
+      }
+    }
+  }
+
+  createSectionAnimations()
+
   // Smooth Scrolling for Navigation Links
   const navLinks = document.querySelectorAll('a[href^="#"]')
   navLinks.forEach((link) => {
