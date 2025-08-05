@@ -1,4 +1,10 @@
-/* Custom CSS Styles */
+/**
+ * Portfolio Website Custom Styles
+ * Author: Nirant Chavda
+ * Description: Custom CSS for portfolio website with modern animations and responsive design
+ */
+
+/* ===== CSS CUSTOM PROPERTIES ===== */
 :root {
   --primary-color: #3b82f6;
   --primary-dark: #1d4ed8;
@@ -8,6 +14,7 @@
   --bg-secondary: #f9fafb;
 }
 
+/* Dark theme color variables */
 [data-theme="dark"] {
   --text-color: #f9fafb;
   --text-light: #d1d5db;
@@ -15,6 +22,7 @@
   --bg-secondary: #1f2937;
 }
 
+/* ===== GLOBAL RESET & BASE STYLES ===== */
 * {
   margin: 0;
   padding: 0;
@@ -32,12 +40,12 @@ body {
   background-color: var(--bg-color);
 }
 
-/* Navigation Styles */
+/* ===== NAVIGATION STYLES ===== */
 .nav-link {
   @apply text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium;
 }
 
-/* Button Styles */
+/* ===== BUTTON STYLES ===== */
 .btn-primary {
   @apply bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1;
 }
@@ -50,11 +58,13 @@ body {
   @apply px-4 py-2 text-sm rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center;
 }
 
-/* Section Styles */
+/* ===== SECTION STYLES ===== */
+/* Section title with icon and gradient accent */
 .section-title {
   @apply text-4xl md:text-5xl font-bold text-center mb-4 relative flex items-center justify-center gap-3;
   position: relative;
 }
+
 .section-title-icon {
   color: #8b5cf6;
   font-size: 1.3em;
@@ -62,6 +72,7 @@ body {
   vertical-align: middle;
   animation: fadeInUp 1s ease-out;
 }
+
 .section-title-accent {
   display: inline-block;
   width: 48px;
@@ -72,6 +83,8 @@ body {
   margin-bottom: 0.2em;
   animation: gradient-shift 3s linear infinite;
 }
+
+/* Animated gradient text effect for section titles */
 .section-title.animate-gradient-text {
   background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
   background-size: 400% 400%;
@@ -80,31 +93,34 @@ body {
   background-clip: text;
   animation: gradient-text 3s ease infinite;
 }
+
 .section-subtitle {
   @apply text-xl text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto font-semibold mt-2 mb-2;
   letter-spacing: 0.01em;
 }
 
-/* Skill Styles */
+/* ===== SKILL COMPONENT STYLES ===== */
+/* Skill progress bar container */
 .skill-bar {
   @apply w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2;
 }
 
+/* Animated skill progress bar */
 .skill-progress {
   @apply bg-primary-500 h-2 rounded-full transition-all duration-1000 ease-out;
 }
 
-/* Tech Tag Styles */
+/* ===== TECHNOLOGY TAG STYLES ===== */
 .tech-tag {
   @apply bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-3 py-1 rounded-full text-sm font-medium;
 }
 
-/* Social Link Styles */
+/* ===== SOCIAL MEDIA LINK STYLES ===== */
 .social-link {
   @apply w-12 h-12 bg-gray-100 dark:bg-gray-800 hover:bg-primary-600 dark:hover:bg-primary-600 text-gray-600 dark:text-gray-300 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110;
 }
 
-/* Particles Animation */
+/* ===== BACKGROUND ANIMATION COMPONENTS ===== */
 .particles-container {
   position: absolute;
   width: 100%;

@@ -1,13 +1,26 @@
-// DOM Content Loaded
+/**
+ * Portfolio Website JavaScript
+ * Author: Nirant Chavda
+ * Description: Main script for portfolio website functionality
+ */
+
+/**
+ * Initialize the portfolio website when DOM content is loaded
+ * Sets up all interactive features and animations
+ */
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize AOS
+  // Initialize AOS (Animate On Scroll) library
   AOS.init({
     duration: 1000,
     once: true,
     offset: 100,
   })
 
-  // Theme Toggle
+  // Theme Toggle Functionality
+  /**
+   * Theme Toggle System
+   * Handles dark/light mode switching with localStorage persistence
+   */
   const themeToggle = document.getElementById("theme-toggle")
   const html = document.documentElement
 
@@ -15,21 +28,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentTheme = localStorage.getItem("theme") || "light"
   html.classList.toggle("dark", currentTheme === "dark")
 
+  // Add click event listener for theme toggle
   themeToggle.addEventListener("click", () => {
     html.classList.toggle("dark")
     const theme = html.classList.contains("dark") ? "dark" : "light"
     localStorage.setItem("theme", theme)
   })
 
-  // Mobile Menu Toggle
+  /**
+   * Mobile Menu Navigation
+   * Handles mobile hamburger menu toggle and navigation
+   */
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle")
   const mobileMenu = document.getElementById("mobile-menu")
 
+  // Toggle mobile menu visibility
   mobileMenuToggle.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden")
   })
 
-  // Close mobile menu when clicking on a link
+  // Close mobile menu when clicking on navigation links
   const mobileMenuLinks = mobileMenu.querySelectorAll("a")
   mobileMenuLinks.forEach((link) => {
     link.addEventListener("click", () => {
@@ -37,7 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Typing Animation
+  /**
+   * Dynamic Typing Animation
+   * Creates a typewriter effect for the hero section text
+   */
   const typedTextElement = document.getElementById("typed-text")
   const textArray = [
     "B.Tech CSE Student",
@@ -53,13 +74,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let charIndex = 0
   let isDeleting = false
 
+  /**
+   * Typewriter animation function
+   * Handles character-by-character typing and deleting effect
+   */
   function typeText() {
     const currentText = textArray[textIndex]
 
     if (isDeleting) {
+      // Remove characters
       typedTextElement.textContent = currentText.substring(0, charIndex - 1)
       charIndex--
     } else {
+      // Add characters
       typedTextElement.textContent = currentText.substring(0, charIndex + 1)
       charIndex++
     }
@@ -67,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let typeSpeed = isDeleting ? 50 : 100
 
     if (!isDeleting && charIndex === currentText.length) {
-      typeSpeed = 2000 // Pause at end
+      typeSpeed = 2000 // Pause at end of word
       isDeleting = true
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false
@@ -78,10 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeText, typeSpeed)
   }
 
-  // Start typing animation
+  // Start the typing animation
   typeText()
 
-  // Particles Animation
+  /**
+   * Particle Animation System
+   * Creates floating particles in the hero section background
+   */
+  /**
+   * Creates animated particles for background decoration
+   * Adjusts particle count based on screen size for performance
+   */
   function createParticles() {
     const particlesContainer = document.querySelector(".particles-container")
     const particleCount = window.innerWidth < 768 ? 30 : 80
@@ -90,16 +124,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const particle = document.createElement("div")
       particle.classList.add("particle")
 
-      // Random size
+      // Set random particle size
       const size = Math.random() * 6 + 2
       particle.style.width = size + "px"
       particle.style.height = size + "px"
 
-      // Random position
+      // Set random particle position
       particle.style.left = Math.random() * 100 + "%"
       particle.style.top = Math.random() * 100 + "%"
 
-      // Random animation delay
+      // Set random animation timing
       particle.style.animationDelay = Math.random() * 8 + "s"
       particle.style.animationDuration = Math.random() * 4 + 6 + "s"
 
@@ -108,8 +142,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   createParticles()
-  
-  // Create floating shapes
+
+  /**
+   * Floating Shapes Animation
+   * Creates geometric shapes that float in the background
+   */
+  /**
+   * Creates floating geometric shapes with random properties
+   * Shapes can be circles or squares with gradient backgrounds
+   */
   function createFloatingShapes() {
     const shapesContainer = document.querySelector(".floating-shapes")
     const shapeCount = window.innerWidth < 768 ? 3 : 6
@@ -118,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const shape = document.createElement("div")
       shape.classList.add("floating-shape")
       
-      // Random shape type
+      // Randomly choose between circle and square
       const shapeType = Math.random() > 0.5 ? 'circle' : 'square'
       const size = Math.random() * 100 + 50
       
@@ -129,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         shape.style.transform = 'rotate(45deg)'
       }
       
+      // Set shape properties
       shape.style.width = size + "px"
       shape.style.height = size + "px"
       shape.style.position = 'absolute'
@@ -137,11 +179,9 @@ document.addEventListener("DOMContentLoaded", () => {
         rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)
       )`
       
-      // Random position
+      // Set random position and animation
       shape.style.left = Math.random() * 100 + "%"
       shape.style.top = Math.random() * 100 + "%"
-      
-      // Random animation
       shape.style.animation = `float-shapes ${Math.random() * 10 + 15}s ease-in-out infinite`
       shape.style.animationDelay = Math.random() * 5 + "s"
       
@@ -151,9 +191,20 @@ document.addEventListener("DOMContentLoaded", () => {
   
   createFloatingShapes()
 
-  // Create section-specific animations
+  /**
+   * Section-Specific Background Animations
+   * Creates unique animated elements for different sections
+   */
+  /**
+   * Creates animated elements specific to each section
+   * - About section: Geometric patterns
+   * - Skills section: Floating orbs
+   * - Projects section: Code rain effect
+   * - Internship section: Network nodes and lines
+   * - Achievements section: Sparkle effects
+   */
   function createSectionAnimations() {
-    // Add more geometric patterns for about section
+    // About section: Add geometric patterns
     const aboutBg = document.querySelector('.about-bg')
     if (aboutBg) {
       for (let i = 0; i < 3; i++) {
@@ -166,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Add more floating orbs for skills section
+    // Skills section: Add floating orbs with gradient backgrounds
     const skillsBg = document.querySelector('.skills-bg')
     if (skillsBg) {
       for (let i = 0; i < 2; i++) {
@@ -189,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Add more code rain elements
+    // Projects section: Add code rain animation with programming terms
     const projectsBg = document.querySelector('.projects-bg')
     if (projectsBg) {
       const codeSnippets = [
@@ -216,10 +267,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Add more network nodes and lines
+    // Internship section: Add network visualization elements
     const internshipBg = document.querySelector('.internship-bg')
     if (internshipBg) {
       for (let i = 0; i < 3; i++) {
+        // Create network nodes
         const node = document.createElement('div')
         node.classList.add('network-node')
         node.style.top = Math.random() * 80 + 10 + '%'
@@ -227,6 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
         node.style.animationDelay = Math.random() * 3 + 's'
         internshipBg.appendChild(node)
         
+        // Create network connection lines
         const line = document.createElement('div')
         line.classList.add('network-line')
         line.style.top = Math.random() * 80 + 10 + '%'
@@ -238,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Add more sparkles for achievements
+    // Achievements section: Add sparkle animation elements
     const achievementsBg = document.querySelector('.achievements-bg')
     if (achievementsBg) {
       for (let i = 0; i < 10; i++) {
@@ -254,7 +307,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   createSectionAnimations()
 
-  // Smooth Scrolling for Navigation Links
+  /**
+   * Smooth Scrolling Navigation
+   * Enables smooth scrolling to sections when clicking navigation links
+   */
   const navLinks = document.querySelectorAll('a[href^="#"]')
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -263,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const targetSection = document.querySelector(targetId)
 
       if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 80 // Account for fixed navbar
+        const offsetTop = targetSection.offsetTop - 80 // Account for fixed navbar height
         window.scrollTo({
           top: offsetTop,
           behavior: "smooth",
@@ -272,9 +328,13 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Scroll to Top Button
+  /**
+   * Scroll to Top Button Functionality
+   * Shows/hides button based on scroll position and handles click to scroll to top
+   */
   const scrollTopBtn = document.getElementById("scroll-top")
 
+  // Show/hide scroll to top button based on scroll position
   window.addEventListener("scroll", () => {
     if (window.pageYOffset > 300) {
       scrollTopBtn.classList.remove("opacity-0", "invisible")
@@ -285,6 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
+  // Handle scroll to top button click
   scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
@@ -292,10 +353,17 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Active Navigation Link
+  /**
+   * Active Navigation Link Highlighting
+   * Updates navigation links to show current section being viewed
+   */
   const sections = document.querySelectorAll("section[id]")
   const navLinksAll = document.querySelectorAll(".nav-link")
 
+  /**
+   * Updates active navigation link based on current scroll position
+   * Highlights the nav link corresponding to the section in view
+   */
   function updateActiveNavLink() {
     let current = ""
     sections.forEach((section) => {
@@ -306,6 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
 
+    // Update navigation link styles
     navLinksAll.forEach((link) => {
       link.classList.remove("text-primary-600", "dark:text-primary-400")
       link.classList.add("text-gray-600", "dark:text-gray-300")
@@ -318,30 +387,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", updateActiveNavLink)
 
-  // Contact Form
+  /**
+   * Contact Form Handler
+   * Handles form submission with validation and user feedback
+   */
   const contactForm = document.getElementById("contact-form")
 
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault()
 
-    // Get form data
+    // Extract form data
     const formData = new FormData(contactForm)
     const name = formData.get("name")
     const email = formData.get("email")
     const message = formData.get("message")
 
-    // Basic validation
+    // Validate required fields
     if (!name || !email || !message) {
       showMessage("Please fill in all fields.", "error")
       return
     }
 
+    // Validate email format
     if (!isValidEmail(email)) {
       showMessage("Please enter a valid email address.", "error")
       return
     }
 
-    // Show loading state
+    // Show loading state during form submission
     const submitBtn = contactForm.querySelector('button[type="submit"]')
     const originalText = submitBtn.innerHTML
     submitBtn.innerHTML = '<div class="loading"></div> Sending...'
@@ -356,17 +429,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000)
   })
 
+  /**
+   * Email validation utility function
+   * @param {string} email - Email address to validate
+   * @returns {boolean} - True if email is valid, false otherwise
+   */
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
   }
 
+  /**
+   * Shows success or error messages in the contact form
+   * @param {string} message - Message text to display
+   * @param {string} type - Message type ('success' or 'error')
+   */
   function showMessage(message, type) {
-    // Remove existing messages
+    // Remove any existing messages
     const existingMessages = contactForm.querySelectorAll(".success-message, .error-message")
     existingMessages.forEach((msg) => msg.remove())
 
-    // Create new message
+    // Create and display new message
     const messageDiv = document.createElement("div")
     messageDiv.className = type === "success" ? "success-message" : "error-message"
     messageDiv.textContent = message
@@ -374,13 +457,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Insert message at the top of the form
     contactForm.insertBefore(messageDiv, contactForm.firstChild)
 
-    // Remove message after 5 seconds
+    // Auto-remove message after 5 seconds
     setTimeout(() => {
       messageDiv.remove()
     }, 5000)
   }
 
-  // Skill Progress Animation
+  /**
+   * Skill Progress Bar Animation
+   * Animates skill bars when they come into view using Intersection Observer
+   */
+  /**
+   * Animates skill progress bars when they come into viewport
+   * Uses Intersection Observer for performance-optimized animations
+   */
   function animateSkillBars() {
     const skillBars = document.querySelectorAll(".skill-progress")
     const observer = new IntersectionObserver(
@@ -392,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
             progressBar.style.width = "0%"
             setTimeout(() => {
               progressBar.style.width = width
-              // Add shimmer effect after animation
+              // Add shimmer effect after animation completes
               setTimeout(() => {
                 progressBar.classList.add('shimmer-effect')
               }, 1000)
@@ -407,8 +497,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   animateSkillBars()
-  
-  // Enhanced scroll animations
+
+  /**
+   * Enhanced Scroll Animations
+   * Adds staggered fade-in animations for various page elements
+   */
   function addScrollAnimations() {
     const animatedElements = document.querySelectorAll('.skill-category, .project-card, .social-link')
     
@@ -426,7 +519,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
   addScrollAnimations()
 
-  // Intersection Observer for Fade In Animation
+  /**
+   * General Fade-In Animation Observer
+   * Handles fade-in animations for elements with .fade-in class
+   */
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -444,17 +540,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const fadeElements = document.querySelectorAll(".fade-in")
   fadeElements.forEach((el) => observer.observe(el))
 
-  // Project Modal (if needed for future enhancement)
+  /**
+   * Project Modal Handler (Future Enhancement)
+   * Placeholder function for opening project detail modals
+   * @param {string} projectId - Unique identifier for the project
+   */
   function openProjectModal(projectId) {
-    // Implementation for project modal
+    // Implementation for project modal functionality
     console.log("Opening project modal for:", projectId)
   }
 
-  // Add click handlers for project cards
+  /**
+   * Project Card Click Animations
+   * Adds subtle click feedback animation to project cards
+   */
   const projectCards = document.querySelectorAll(".project-card")
   projectCards.forEach((card) => {
     card.addEventListener("click", function () {
-      // Add subtle click animation
+      // Add visual feedback for click interaction
       this.style.transform = "scale(0.98)"
       setTimeout(() => {
         this.style.transform = ""
@@ -462,7 +565,10 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  // Preload images for better performance
+  /**
+   * Image Preloading for Performance
+   * Preloads common images to improve user experience
+   */
   function preloadImages() {
     const images = ["/placeholder.svg?height=400&width=400", "/placeholder.svg?height=200&width=400"]
 
@@ -474,22 +580,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   preloadImages()
 
-  // Add loading animation for page
+  /**
+   * Page Load Animation
+   * Adds loaded class to body when page is fully loaded
+   */
   window.addEventListener("load", () => {
     document.body.classList.add("loaded")
   })
 
-  // Handle resume download
+  /**
+   * Resume Download Tracking
+   * Handles resume download link clicks with analytics tracking
+   */
   const resumeLinks = document.querySelectorAll('a[href="resume.pdf"]')
   resumeLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      // You can add analytics tracking here
+      // Analytics tracking for resume downloads
       console.log("Resume download initiated")
-      // If resume.pdf doesn't exist, you might want to handle this
+      // Note: If resume.pdf doesn't exist, this should be handled appropriately
     })
   })
 
-  // Add hover effects for social links
+  /**
+   * Social Links Hover Effects
+   * Adds enhanced hover animations for social media links
+   */
   const socialLinks = document.querySelectorAll(".social-link")
   socialLinks.forEach((link) => {
     link.addEventListener("mouseenter", function () {
@@ -502,8 +617,11 @@ document.addEventListener("DOMContentLoaded", () => {
       this.style.boxShadow = ""
     })
   })
-  
-  // Add parallax effect to hero section
+
+  /**
+   * Parallax Effect for Hero Section
+   * Creates depth effect by moving background elements at different speeds
+   */
   function addParallaxEffect() {
     const hero = document.getElementById('home')
     const particles = document.querySelector('.particles-container')
@@ -524,8 +642,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   addParallaxEffect()
-  
-  // Add mouse movement effect to hero
+
+  /**
+   * Mouse Movement Effect for Hero Section
+   * Creates subtle interactive movement based on mouse position
+   */
   function addMouseEffect() {
     const hero = document.getElementById('home')
     const particles = document.querySelector('.particles-container')
@@ -542,20 +663,29 @@ document.addEventListener("DOMContentLoaded", () => {
   
   addMouseEffect()
 
-  // Keyboard navigation support
+  /**
+   * Keyboard Navigation Support
+   * Enhances accessibility with keyboard shortcuts
+   */
   document.addEventListener("keydown", (e) => {
     // ESC key closes mobile menu
     if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
       mobileMenu.classList.add("hidden")
     }
 
-    // Enter key on theme toggle
+    // Enter key activates theme toggle button
     if (e.key === "Enter" && e.target === themeToggle) {
       themeToggle.click()
     }
   })
 
-  // Performance optimization: Debounce scroll events
+  /**
+   * Performance Optimization: Debounce Function
+   * Limits the rate at which a function can fire for better performance
+   * @param {Function} func - Function to debounce
+   * @param {number} wait - Wait time in milliseconds
+   * @returns {Function} - Debounced function
+   */
   function debounce(func, wait) {
     let timeout
     return function executedFunction(...args) {
@@ -568,7 +698,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Apply debouncing to scroll events
+  // Apply debouncing to scroll events for better performance
   const debouncedScrollHandler = debounce(() => {
     updateActiveNavLink()
   }, 10)
@@ -578,7 +708,10 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Portfolio website initialized successfully!")
 })
 
-// Service Worker Registration (for PWA capabilities)
+/**
+ * Service Worker Registration
+ * Enables Progressive Web App (PWA) capabilities
+ */
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -592,18 +725,22 @@ if ("serviceWorker" in navigator) {
   })
 }
 
-// Add custom cursor effect (optional enhancement)
+/**
+ * Custom Cursor Effect (Optional Enhancement)
+ * Creates a custom cursor that follows mouse movement
+ */
 function addCustomCursor() {
   const cursor = document.createElement("div")
   cursor.classList.add("custom-cursor")
   document.body.appendChild(cursor)
 
+  // Update cursor position on mouse movement
   document.addEventListener("mousemove", (e) => {
     cursor.style.left = e.clientX + "px"
     cursor.style.top = e.clientY + "px"
   })
 
-  // Add cursor styles
+  // Add cursor styles dynamically
   const style = document.createElement("style")
   style.textContent = `
         .custom-cursor {
@@ -626,5 +763,5 @@ function addCustomCursor() {
   document.head.appendChild(style)
 }
 
-// Uncomment to enable custom cursor
+// Uncomment the following line to enable custom cursor
 // addCustomCursor();
