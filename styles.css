@@ -121,6 +121,7 @@ body {
 }
 
 /* ===== BACKGROUND ANIMATION COMPONENTS ===== */
+/* Particle container for background animation effects */
 .particles-container {
   position: absolute;
   width: 100%;
@@ -128,7 +129,7 @@ body {
   overflow: hidden;
 }
 
-/* Enhanced Background Animations */
+/* Floating shapes background animation container */
 .floating-shapes {
   position: absolute;
   width: 100%;
@@ -137,6 +138,7 @@ body {
   z-index: 1;
 }
 
+/* Pseudo-elements for creating floating geometric shapes */
 .floating-shapes::before,
 .floating-shapes::after {
   content: '';
@@ -145,6 +147,7 @@ body {
   animation: float-shapes 20s ease-in-out infinite;
 }
 
+/* Large floating shape with blue-purple gradient */
 .floating-shapes::before {
   width: 300px;
   height: 300px;
@@ -154,6 +157,7 @@ body {
   animation-delay: -5s;
 }
 
+/* Medium floating shape with pink-blue gradient */
 .floating-shapes::after {
   width: 200px;
   height: 200px;
@@ -163,6 +167,7 @@ body {
   animation-delay: -10s;
 }
 
+/* Floating shapes animation with rotation and scaling */
 @keyframes float-shapes {
   0%, 100% {
     transform: translateY(0px) rotate(0deg) scale(1);
@@ -175,6 +180,7 @@ body {
   }
 }
 
+/* Animated gradient background for sections */
 .animated-bg {
   background: linear-gradient(-45deg, 
     rgba(59, 130, 246, 0.05), 
@@ -186,6 +192,7 @@ body {
   animation: gradient-shift 15s ease infinite;
 }
 
+/* Gradient background animation keyframe */
 @keyframes gradient-shift {
   0% {
     background-position: 0% 50%;
@@ -198,7 +205,7 @@ body {
   }
 }
 
-/* Section-specific Background Animations */
+/* ===== SECTION-SPECIFIC BACKGROUND ANIMATIONS ===== */
 
 /* About Section - Geometric Patterns */
 .about-bg {
@@ -211,6 +218,7 @@ body {
   z-index: 0;
 }
 
+/* Animated geometric pattern elements */
 .geometric-pattern {
   position: absolute;
   width: 100px;
@@ -219,6 +227,7 @@ body {
   animation: rotate-pattern 15s linear infinite;
 }
 
+/* Square pattern - top left */
 .geometric-pattern:nth-child(1) {
   top: 10%;
   left: 5%;
@@ -226,6 +235,7 @@ body {
   border-radius: 0;
 }
 
+/* Circle pattern - middle right */
 .geometric-pattern:nth-child(2) {
   top: 60%;
   right: 10%;
@@ -234,6 +244,7 @@ body {
   border-color: rgba(16, 185, 129, 0.1);
 }
 
+/* Diamond pattern - bottom left */
 .geometric-pattern:nth-child(3) {
   bottom: 20%;
   left: 15%;
@@ -242,6 +253,7 @@ body {
   border-color: rgba(236, 72, 153, 0.1);
 }
 
+/* Rotation animation for geometric patterns */
 @keyframes rotate-pattern {
   0% {
     transform: rotate(0deg) scale(1);
@@ -254,7 +266,7 @@ body {
   }
 }
 
-/* Enhanced About Section Animations */
+/* Enhanced floating elements container for about section */
 .about-floating-elements {
   position: absolute;
   top: 0;
@@ -265,6 +277,7 @@ body {
   z-index: 1;
 }
 
+/* Floating triangle shapes */
 .floating-triangle {
   position: absolute;
   width: 0;
@@ -272,6 +285,7 @@ body {
   animation: float-triangle 12s ease-in-out infinite;
 }
 
+/* Blue triangle - top right */
 .floating-triangle:nth-child(1) {
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
@@ -281,6 +295,7 @@ body {
   animation-delay: 0s;
 }
 
+/* Green triangle - bottom left */
 .floating-triangle:nth-child(2) {
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
@@ -290,6 +305,7 @@ body {
   animation-delay: -4s;
 }
 
+/* Pink triangle - middle right */
 .floating-triangle:nth-child(3) {
   border-left: 35px solid transparent;
   border-right: 35px solid transparent;
@@ -299,6 +315,7 @@ body {
   animation-delay: -8s;
 }
 
+/* Triangle floating animation with rotation and opacity changes */
 @keyframes float-triangle {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -318,6 +335,7 @@ body {
   }
 }
 
+/* Morphing blob shapes with gradient backgrounds */
 .morphing-blob {
   position: absolute;
   border-radius: 50%;
@@ -325,6 +343,7 @@ body {
   animation: morph-blob 10s ease-in-out infinite;
 }
 
+/* Large blue-purple blob - top left */
 .morphing-blob:nth-child(4) {
   width: 120px;
   height: 120px;
@@ -333,6 +352,7 @@ body {
   animation-delay: 0s;
 }
 
+/* Medium green-blue blob - bottom right */
 .morphing-blob:nth-child(5) {
   width: 80px;
   height: 80px;
@@ -342,6 +362,7 @@ body {
   background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
 }
 
+/* Medium pink-green blob - middle right */
 .morphing-blob:nth-child(6) {
   width: 100px;
   height: 100px;
@@ -351,6 +372,7 @@ body {
   background: linear-gradient(45deg, rgba(236, 72, 153, 0.1), rgba(16, 185, 129, 0.1));
 }
 
+/* Morphing animation that changes shape and rotation */
 @keyframes morph-blob {
   0%, 100% {
     border-radius: 50% 50% 50% 50%;
@@ -370,6 +392,7 @@ body {
   }
 }
 
+/* Pulsing ring elements */
 .pulsing-ring {
   position: absolute;
   border: 3px solid rgba(59, 130, 246, 0.2);
@@ -377,6 +400,7 @@ body {
   animation: pulse-ring 8s ease-in-out infinite;
 }
 
+/* Large pulsing ring - middle right */
 .pulsing-ring:nth-child(7) {
   width: 150px;
   height: 150px;
@@ -460,7 +484,7 @@ body {
     opacity: 0.8;
   }
 }
-/* Skills Section - Floating Orbs */
+/* ===== SKILLS SECTION ANIMATIONS ===== */
 .skills-bg {
   position: absolute;
   top: 0;
@@ -471,6 +495,7 @@ body {
   z-index: 0;
 }
 
+/* Floating orb elements with radial gradients */
 .floating-orb {
   position: absolute;
   border-radius: 50%;
@@ -478,6 +503,7 @@ body {
   animation: float-orb 12s ease-in-out infinite;
 }
 
+/* Large blue orb - top left */
 .floating-orb:nth-child(1) {
   width: 150px;
   height: 150px;
@@ -486,6 +512,7 @@ body {
   animation-delay: 0s;
 }
 
+/* Medium green orb - middle right */
 .floating-orb:nth-child(2) {
   width: 100px;
   height: 100px;
@@ -495,6 +522,7 @@ body {
   background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent);
 }
 
+/* Large pink orb - bottom left */
 .floating-orb:nth-child(3) {
   width: 200px;
   height: 200px;
@@ -504,6 +532,7 @@ body {
   background: radial-gradient(circle, rgba(236, 72, 153, 0.1), transparent);
 }
 
+/* Floating orb animation with translation and scaling */
 @keyframes float-orb {
   0%, 100% {
     transform: translateY(0px) translateX(0px) scale(1);
@@ -516,7 +545,7 @@ body {
   }
 }
 
-/* Projects Section - Code Rain */
+/* ===== PROJECTS SECTION ANIMATIONS ===== */
 .projects-bg {
   position: absolute;
   top: 0;
@@ -527,6 +556,7 @@ body {
   z-index: 0;
 }
 
+/* Code rain effect with programming text */
 .code-rain {
   position: absolute;
   color: rgba(35, 37, 41, 0.1);
@@ -535,6 +565,7 @@ body {
   animation: rain-fall 8s linear infinite;
 }
 
+/* Code rain positioning with staggered delays */
 .code-rain:nth-child(1) {
   left: 10%;
   animation-delay: 0s;
@@ -560,6 +591,7 @@ body {
   animation-delay: -1s;
 }
 
+/* Rain falling animation with opacity transitions */
 @keyframes rain-fall {
   0% {
     top: -100px;
@@ -915,14 +947,10 @@ body {
   @apply bg-primary-600;
 }
 
-/* Enhanced Responsive Design */
+/* ===== ENHANCED RESPONSIVE DESIGN ===== */
 @media (max-width: 640px) {
   .section-title {
     @apply text-2xl;
-  }
-  
-  .hero-title {
-    @apply text-3xl;
   }
   
   .floating-shapes::before {
@@ -939,10 +967,6 @@ body {
 @media (max-width: 768px) {
   .section-title {
     @apply text-3xl;
-  }
-
-  .hero-title {
-    @apply text-4xl;
   }
   
   .floating-shapes::before {
@@ -1081,8 +1105,10 @@ textarea:focus {
   @apply bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-4 rounded-lg mb-4;
 }
 
+/* ===== ENHANCED TYPOGRAPHY STYLES ===== */
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+/* Hero section title with animated gradient */
 .hero-title {
   font-size: 4rem;
   font-weight: 900;
@@ -1096,6 +1122,8 @@ textarea:focus {
   animation: gradient-shift 5s ease-in-out infinite;
   text-shadow: 0 4px 24px rgba(59,130,246,0.15);
 }
+
+/* Hero section name with custom font */
 .hero-name {
   font-family: 'Pacifico', cursive;
   font-size: 1.3em;
@@ -1110,30 +1138,16 @@ textarea:focus {
   letter-spacing: 0.03em;
   text-shadow: 0 2px 12px rgba(236,72,153,0.12);
 }
-.section-title {
-  font-size: 2.8rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s linear infinite;
-  margin-bottom: 0.5em;
-}
-.section-subtitle {
-  font-size: 1.6rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #8b5cf6, #3b82f6, #ec4899);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 6s linear infinite;
-  margin-bottom: 1.2em;
-}
+
+/* ===== RESPONSIVE DESIGN UTILITIES ===== */
 @media (max-width: 640px) {
-  .hero-title { font-size: 2.2rem; }
-  .section-title { font-size: 1.5rem; }
-  .section-subtitle { font-size: 1.1rem; }
+  .hero-title { 
+    font-size: 2.2rem; 
+  }
+  .section-title { 
+    font-size: 1.5rem; 
+  }
+  .section-subtitle { 
+    font-size: 1.1rem; 
+  }
 }
