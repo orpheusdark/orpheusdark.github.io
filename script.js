@@ -1,11 +1,22 @@
 // DOM Content Loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize AOS
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100,
-  })
+  // Loading Screen Animation
+  setTimeout(() => {
+    const loadingScreen = document.getElementById('loading-screen')
+    loadingScreen.classList.add('fade-out')
+    setTimeout(() => {
+      loadingScreen.style.display = 'none'
+    }, 500)
+  }, 1500)
+
+  // Initialize AOS (if available)
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    })
+  }
 
   // Theme Toggle
   const themeToggle = document.getElementById("theme-toggle")
@@ -435,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000)
   }
 
-  // Skill Progress Animation
+  // Enhanced Skill Progress Animation
   function animateSkillBars() {
     const skillBars = document.querySelectorAll(".skill-progress")
     const observer = new IntersectionObserver(
@@ -445,13 +456,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const progressBar = entry.target
             const width = progressBar.style.width
             progressBar.style.width = "0%"
+            progressBar.style.transition = "width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+            
             setTimeout(() => {
               progressBar.style.width = width
               // Add shimmer effect after animation
               setTimeout(() => {
                 progressBar.classList.add('shimmer-effect')
-              }, 1000)
-            }, 200)
+              }, 1500)
+            }, 300)
           }
         })
       },
@@ -693,6 +706,69 @@ document.getElementById('scroll-top').addEventListener('click', () => {
     behavior: 'smooth'
   })
 })
+
+// Enhanced Scroll Reveal Animations
+function initScrollReveal() {
+  const scrollElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right')
+  
+  const elementInView = (el, dividend = 1) => {
+    const elementTop = el.getBoundingClientRect().top
+    return (
+      elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+    )
+  }
+  
+  const elementOutofView = (el) => {
+    const elementTop = el.getBoundingClientRect().top
+    return (
+      elementTop > (window.innerHeight || document.documentElement.clientHeight)
+    )
+  }
+  
+  const displayScrollElement = (element) => {
+    element.classList.add('revealed')
+  }
+  
+  const hideScrollElement = (element) => {
+    element.classList.remove('revealed')
+  }
+  
+  const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+      if (elementInView(el, 1.25)) {
+        displayScrollElement(el)
+      } else if (elementOutofView(el)) {
+        hideScrollElement(el)
+      }
+    })
+  }
+  
+  window.addEventListener('scroll', () => {
+    handleScrollAnimation()
+  })
+  
+  // Initial check
+  handleScrollAnimation()
+}
+
+// Initialize scroll reveal
+initScrollReveal()
+
+// Parallax effect for hero section
+function addEnhancedParallax() {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset
+    const parallax = document.querySelector('.particles-container')
+    const hero = document.getElementById('home')
+    
+    if (parallax && hero) {
+      const speed = scrolled * 0.5
+      parallax.style.transform = `translateY(${speed}px)`
+    }
+  })
+}
+
+addEnhancedParallax()
 
 // Service Worker Registration (for PWA capabilities)
 if ("serviceWorker" in navigator) {
