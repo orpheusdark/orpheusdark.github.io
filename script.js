@@ -318,28 +318,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", updateActiveNavLink)
 
-  // Contact Form
+  // Enhanced Contact Form with Real-time Validation
   const contactForm = document.getElementById("contact-form")
+  const formInputs = contactForm.querySelectorAll('.form-input')
+
+  // Real-time validation
+  formInputs.forEach(input => {
+    input.addEventListener('input', () => validateField(input))
+    input.addEventListener('blur', () => validateField(input))
+  })
+
+  function validateField(field) {
+    const value = field.value.trim()
+    const fieldName = field.name
+    const errorElement = field.parentNode.querySelector('.error-message')
+    
+    // Clear previous states
+    field.classList.remove('error', 'success')
+    errorElement.classList.add('hidden')
+    
+    if (!value) {
+      showFieldError(field, errorElement, `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`)
+      return false
+    }
+    
+    // Specific validation
+    if (fieldName === 'email') {
+      if (!isValidEmail(value)) {
+        showFieldError(field, errorElement, 'Please enter a valid email address')
+        return false
+      }
+    }
+    
+    if (fieldName === 'name') {
+      if (value.length < 2) {
+        showFieldError(field, errorElement, 'Name must be at least 2 characters')
+        return false
+      }
+    }
+    
+    if (fieldName === 'message') {
+      if (value.length < 10) {
+        showFieldError(field, errorElement, 'Message must be at least 10 characters')
+        return false
+      }
+    }
+    
+    // Success state
+    field.classList.add('success')
+    return true
+  }
+
+  function showFieldError(field, errorElement, message) {
+    field.classList.add('error')
+    errorElement.textContent = message
+    errorElement.classList.remove('hidden')
+  }
 
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault()
+
+    // Validate all fields
+    let isValid = true
+    formInputs.forEach(input => {
+      if (!validateField(input)) {
+        isValid = false
+      }
+    })
+
+    if (!isValid) {
+      return
+    }
 
     // Get form data
     const formData = new FormData(contactForm)
     const name = formData.get("name")
     const email = formData.get("email")
     const message = formData.get("message")
-
-    // Basic validation
-    if (!name || !email || !message) {
-      showMessage("Please fill in all fields.", "error")
-      return
-    }
-
-    if (!isValidEmail(email)) {
-      showMessage("Please enter a valid email address.", "error")
-      return
-    }
 
     // Show loading state
     const submitBtn = contactForm.querySelector('button[type="submit"]')
@@ -576,6 +631,67 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", debouncedScrollHandler)
 
   console.log("Portfolio website initialized successfully!")
+
+  // Project Filter Functionality
+  const filterButtons = document.querySelectorAll('.project-filter-btn')
+  const filterProjectCards = document.querySelectorAll('.project-card')
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'))
+      // Add active class to clicked button
+      button.classList.add('active')
+
+      const filterValue = button.getAttribute('data-filter')
+
+      filterProjectCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category')
+        
+        if (filterValue === 'all' || cardCategory === filterValue) {
+          card.style.display = 'block'
+          card.style.opacity = '0'
+          card.style.transform = 'translateY(20px)'
+          
+          // Animate in
+          setTimeout(() => {
+            card.style.transition = 'all 0.5s ease'
+            card.style.opacity = '1'
+            card.style.transform = 'translateY(0)'
+          }, 100)
+        } else {
+          card.style.transition = 'all 0.3s ease'
+          card.style.opacity = '0'
+          card.style.transform = 'translateY(-20px)'
+          
+          setTimeout(() => {
+            card.style.display = 'none'
+          }, 300)
+        }
+      })
+    })
+  })
+})
+
+// Enhanced Scroll to Top Button
+window.addEventListener('scroll', () => {
+  const scrollTopBtn = document.getElementById('scroll-top')
+  if (window.pageYOffset > 300) {
+    scrollTopBtn.style.opacity = '1'
+    scrollTopBtn.style.visibility = 'visible'
+    scrollTopBtn.style.transform = 'translateY(0)'
+  } else {
+    scrollTopBtn.style.opacity = '0'
+    scrollTopBtn.style.visibility = 'hidden'
+    scrollTopBtn.style.transform = 'translateY(20px)'
+  }
+})
+
+document.getElementById('scroll-top').addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
 })
 
 // Service Worker Registration (for PWA capabilities)
