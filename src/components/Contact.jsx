@@ -6,6 +6,7 @@ import { SiLeetcode, SiTryhackme } from 'react-icons/si'
 import { ExternalLink } from 'lucide-react'
 
 const Contact = ({ darkMode }) => {
+  const year = new Date().getFullYear()
   const socials = [
     { icon: FaLinkedin, url: personalInfo.linkedin, label: 'LinkedIn', color: '#0077b5' },
     { icon: FaGithub, url: personalInfo.github, label: 'GitHub', color: darkMode ? '#fff' : '#333' },
@@ -80,7 +81,7 @@ const Contact = ({ darkMode }) => {
           className={`text-xs font-mono ${darkMode ? 'text-gray-700' : 'text-gray-400'}`}
         >
           Built with React + Vite + Tailwind + Framer Motion
-          <br />© 2025 Nirant Chavda. All rights reserved.
+          <br />© {year} Nirant Chavda. All rights reserved.
         </motion.p>
       </div>
     </section>
