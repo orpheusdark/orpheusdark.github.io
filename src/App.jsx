@@ -11,7 +11,7 @@ import Terminal from './components/Terminal'
 import Chatbot from './components/Chatbot'
 import CodingProfiles from './components/CodingProfiles'
 import Contact from './components/Contact'
-import BackgroundCanvas from './components/BackgroundCanvas'
+import BackgroundNetwork from './components/BackgroundNetwork'
 
 function App() {
   const [entered, setEntered] = useState(false)
@@ -63,7 +63,7 @@ function App() {
       <div id="scroll-progress" style={{ width: `${scrollProgress}%` }} />
 
       {/* Background */}
-      <BackgroundCanvas darkMode={darkMode} />
+      <BackgroundNetwork darkMode={darkMode} />
 
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 

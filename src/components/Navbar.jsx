@@ -53,17 +53,17 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             : 'bg-white/70 backdrop-blur-md border border-gray-200/80 shadow-md'
       }`}
     >
-      <div className="flex items-center justify-between px-5 py-3">
+      <div className="flex items-center justify-between px-5 py-3 relative">
         {/* Logo */}
-        <button onClick={() => scrollTo('hero')} className="flex items-center gap-2 shrink-0">
+        <button onClick={() => scrollTo('hero')} className="flex items-center gap-2 shrink-0 z-10">
           <Terminal className={`w-5 h-5 ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`} />
           <span className={`font-mono font-bold text-sm ${darkMode ? 'text-cyan-400' : 'text-blue-600'}`}>
             NC<span className={darkMode ? 'text-gray-500' : 'text-gray-400'}>@portfolio</span>
           </span>
         </button>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop nav – absolutely centered */}
+        <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -84,7 +84,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         </div>
 
         {/* Right controls */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 shrink-0 z-10">
           <button
             onClick={() => setDarkMode(!darkMode)}
             className={`p-2 rounded-lg transition-all duration-200 ${
