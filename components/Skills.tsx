@@ -32,7 +32,7 @@ export default function Skills() {
     <section id="skills" className="py-28 bg-[#080810] relative overflow-hidden">
       <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full bg-pink-600/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           className="mb-16 text-center"
