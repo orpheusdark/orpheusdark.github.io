@@ -50,7 +50,7 @@ export default function Certifications() {
     <section id="certifications" className="py-24 bg-[#080810] relative overflow-hidden">
       <div className="absolute bottom-0 left-1/3 w-64 h-64 rounded-full bg-cyan-600/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           className="mb-12 text-center"

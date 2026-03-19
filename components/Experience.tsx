@@ -43,7 +43,7 @@ export default function Experience() {
     <section id="experience" className="py-28 bg-[#0f0f1a] relative overflow-hidden">
       <div className="absolute top-0 right-1/4 w-72 h-72 rounded-full bg-violet-600/6 blur-3xl pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           className="mb-16 text-center"

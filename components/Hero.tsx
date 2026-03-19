@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
+import Terminal from "@/components/Terminal";
 
 const ORB_COUNT = 8;
 
@@ -101,78 +102,86 @@ export default function Hero() {
       ))}
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="flex flex-col items-center gap-6"
-        >
-          {/* Top label */}
-          <motion.div variants={itemVariants} className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-sm font-medium tracking-wide">
-              Computer Engineering Student
-              <span
-                className="inline-block w-0.5 h-4 bg-violet-400 rounded"
-                style={{ opacity: cursorVisible ? 1 : 0, transition: "opacity 0.1s" }}
-              />
-            </span>
-          </motion.div>
-
-          {/* Main heading */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold font-poppins leading-tight tracking-tight text-white"
-          >
-            I design systems that
-            <br />
-            <span className="bg-gradient-to-r from-violet-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">
-              detect patterns,
-            </span>{" "}
-            risks,
-            <br />
-            and hidden connections.
-          </motion.h1>
-
-          {/* Name */}
-          <motion.p
-            variants={itemVariants}
-            className="text-white/40 text-base sm:text-lg tracking-[0.25em] uppercase font-medium"
-          >
-            Nirant Chavda
-          </motion.p>
-
-          {/* Tagline */}
-          <motion.p
-            variants={itemVariants}
-            className="max-w-xl text-white/60 text-base sm:text-lg leading-relaxed"
-          >
-            Building secure systems and exploring real-world challenges.
-          </motion.p>
-
-          {/* CTAs */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Left: text */}
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 mt-2"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col items-start gap-6 flex-1 text-left"
           >
-            <motion.button
-              onClick={() => scrollToSection("projects")}
-              className="px-7 py-3 rounded-xl font-semibold text-white bg-violet-600 hover:bg-violet-500 transition-colors shadow-lg shadow-violet-900/30"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
+            {/* Top label */}
+            <motion.div variants={itemVariants}>
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-sm font-medium tracking-wide">
+                Computer Engineering Student
+                <span
+                  className="inline-block w-0.5 h-4 bg-violet-400 rounded"
+                  style={{ opacity: cursorVisible ? 1 : 0, transition: "opacity 0.1s" }}
+                />
+              </span>
+            </motion.div>
+
+            {/* Main heading */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins leading-tight tracking-tight text-white"
             >
-              View Projects
-            </motion.button>
-            <motion.button
-              onClick={() => scrollToSection("contact")}
-              className="px-7 py-3 rounded-xl font-semibold text-white border border-white/20 hover:border-cyan-400/60 hover:bg-white/5 transition-all"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
+              I design systems that
+              <br />
+              <span className="bg-gradient-to-r from-violet-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">
+                detect patterns,
+              </span>{" "}
+              risks,
+              <br />
+              and hidden connections.
+            </motion.h1>
+
+            {/* Name */}
+            <motion.p
+              variants={itemVariants}
+              className="text-white/40 text-base tracking-[0.25em] uppercase font-medium"
             >
-              Contact Me
-            </motion.button>
+              Nirant Chavda
+            </motion.p>
+
+            {/* Tagline */}
+            <motion.p
+              variants={itemVariants}
+              className="max-w-md text-white/60 text-base leading-relaxed"
+            >
+              Building secure systems and exploring real-world challenges.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4 mt-2"
+            >
+              <motion.button
+                onClick={() => scrollToSection("projects")}
+                className="px-7 py-3 rounded-xl font-semibold text-white bg-violet-600 hover:bg-violet-500 transition-colors shadow-lg shadow-violet-900/30"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                View Projects
+              </motion.button>
+              <motion.button
+                onClick={() => scrollToSection("contact")}
+                className="px-7 py-3 rounded-xl font-semibold text-white border border-white/20 hover:border-cyan-400/60 hover:bg-white/5 transition-all"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Contact Me
+              </motion.button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Right: Terminal */}
+          <div className="w-full lg:w-[480px] shrink-0">
+            <Terminal />
+          </div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
