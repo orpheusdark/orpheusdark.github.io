@@ -190,16 +190,17 @@ GitHub: github.com/nirantchavda/devflow`,
 
 👨‍💻 Nirant Chavda — Open to opportunities!
 
-Email    : nirant@example.com
-LinkedIn : linkedin.com/in/nirantchavda
-GitHub   : github.com/nirantchavda
-Twitter  : @nirantchavda
+Email    : orpheusdark@duck.com
+LinkedIn : linkedin.com/in/orpheusdark
+GitHub   : github.com/orpheusdark
+Wars   : codewars.com/users/orpheusdark
+
 
 I'm available for:
   ▸ Full-time roles (Remote / Hybrid)
   ▸ Freelance projects
-  ▸ Open source collaboration
-  ▸ Hackathon partnerships
+  ▸ Open source collaboration 
+  ▸ Hackathon partnerships 🥂
 
 Response time: < 24 hours
 
