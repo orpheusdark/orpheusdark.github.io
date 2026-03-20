@@ -175,26 +175,9 @@ body {
   color: var(--input-fg);
   font-family: inherit;
   font-size: 14px;
-  caret-color: transparent;
+  caret-color: var(--cursor);
   width: 100%;
   padding: 0;
-}
-
-/* Blinking cursor */
-.cursor {
-  display: inline-block;
-  width: 8px;
-  height: 1.2em;
-  background: var(--cursor);
-  animation: blink 1.1s step-end infinite;
-  vertical-align: text-bottom;
-  margin-left: 1px;
-  opacity: 1;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
 }
 
 /* ─── Autocomplete ─────────────────────────────────────────── */

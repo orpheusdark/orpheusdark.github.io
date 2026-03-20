@@ -252,7 +252,6 @@ const Terminal: React.FC = () => {
               spellCheck={false}
               aria-label="terminal input"
             />
-            <span className="cursor" aria-hidden="true" />
           </div>
         </div>
 
