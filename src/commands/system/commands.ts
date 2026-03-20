@@ -4,6 +4,13 @@ import {
   getCommandNames,
 } from '../../core/executor';
 import { getNode, resolvePath, pathToString } from './filesystem';
+import { addLine } from '../../store/terminalStore';
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 // ─── BANNER ──────────────────────────────────────────────────────────────────
 registerCommand({
@@ -451,28 +458,51 @@ No files were harmed in the making of this easter egg.`,
 registerCommand({
   name: 'hack',
   description: 'Easter egg: try to hack the system',
-  execute: (_p) => {
+  execute: async (_p) => {
     if (_p.args.join(' ').toLowerCase().includes('the system') || _p.args.length === 0) {
-      return [
-        {
-          type: 'output',
-          text: `
-Initializing hack sequence...
-[████████████████████] 100%
-
-> Bypassing firewall...         [DONE]
-> Injecting payload...          [DONE]  
-> Accessing mainframe...        [DONE]
-> Downloading the internet...   [DONE]
-> Hacking the Gibson...         [DONE]
-
-Hack complete. You are now root.
-
-Just kidding. This is a portfolio website. 🙃
-But if you're this curious, we should talk!
-Run 'hireme' or 'sudo hireme' for contact info.`,
-        },
+      const progressFrames = [
+        '[##..................] 10%',
+        '[######..............] 30%',
+        '[##########..........] 50%',
+        '[##############......] 70%',
+        '[##################..] 90%',
+        '[####################] 100%',
       ];
+
+      const steps = [
+        'Bypassing firewall',
+        'Injecting payload',
+        'Accessing mainframe',
+        'Downloading the internet',
+        'Hacking the Gibson',
+      ];
+
+      addLine({ type: 'output', text: 'Initializing hack sequence...' });
+      await sleep(300);
+
+      for (const frame of progressFrames) {
+        addLine({ type: 'output', text: frame });
+        await sleep(180);
+      }
+
+      addLine({ type: 'output', text: '' });
+
+      for (const step of steps) {
+        addLine({ type: 'output', text: `> ${step}...` });
+        await sleep(420);
+        const latency = Math.floor(80 + Math.random() * 420);
+        addLine({ type: 'output', text: `  ${step}: [DONE] (${latency}ms)` });
+        await sleep(160);
+      }
+
+      addLine({ type: 'output', text: '' });
+      addLine({ type: 'output', text: 'Hack complete. You are now root.' });
+      await sleep(350);
+      addLine({ type: 'output', text: '' });
+      addLine({ type: 'output', text: 'Just kidding. This is a portfolio website.' });
+      addLine({ type: 'output', text: "But if you're this curious, we should talk!" });
+      addLine({ type: 'output', text: "Run 'hireme' or 'sudo hireme' for contact info." });
+      return [];
     }
     return [{ type: 'error', text: `hack: command not found. Did you mean 'hack the system'?` }];
   },
