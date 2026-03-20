@@ -569,13 +569,5 @@ registerCommand({
   ],
 });
 
-// ─── ECHO ─────────────────────────────────────────────────────────────────────
-registerCommand({
-  name: 'echo',
-  description: 'Echo text back',
-  usage: '<text>',
-  execute: (_p) => [{ type: 'output', text: _p.args.join(' ') || '' }],
-});
-
 // Expose command names for autocomplete
 export { getCommandNames };
