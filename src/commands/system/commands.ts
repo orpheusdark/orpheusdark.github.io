@@ -26,10 +26,10 @@ registerCommand({
  ╚██████╗██║  ██║██║  ██║ ╚████╔╝ ██████╔╝██║  ██║
   ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═════╝ ╚═╝  ╚═╝
 
- ┌────────────────────────────────────────────────────────┐
- │  Full-Stack Developer  •  Hacker  •  Open-Source Nerd  │
- │  "Code is poetry. Ship it."                            │
- └────────────────────────────────────────────────────────┘
+ ┌──────────────────────────────────────────────────────────┐
+ │  Full-Stack Developer  •  Explorer  •  Open-Source Nerd  │
+ │  "Code is poetry. Ship it."                              │
+ └──────────────────────────────────────────────────────────┘
 
  Type 'help' to see available commands.
  Type 'about' to learn more about me.`,
@@ -382,7 +382,7 @@ You have been elevated to SUPERUSER privileges.
 This means you now have the HIGHEST priority to
 reach out and hire Nirant Chavda.
 
-  Email    : nirant@example.com
+  Email    : orpheusdark@duck.com
   LinkedIn : linkedin.com/in/nirantchavda
 
 WARNING: This offer expires in 24h. Act fast! ⚡`,
@@ -507,13 +507,13 @@ registerCommand({
       text: `
          .                    nirant@portfolio
         /|\\                   ───────────────
-       / | \\                  OS: PortfolioOS v3.0 (Vite-based)
+       / | \\                  OS: NirantOS v3.0
       /  |  \\                 Host: GitHub Pages
      /   |   \\                Kernel: React 19.0.0
     /    |    \\               Uptime: Always online
    /_____|_____\\              Shell: Terminal.tsx
                               Resolution: your screen
-        [NC]                  Theme: Dark Hacker
+        [NC]                  Theme: Dark
                               CPU: Caffeine-powered
    "Building the future,     Memory: Enough for big dreams
     one commit at a time."`,

@@ -8,12 +8,12 @@ export const virtualFS: FileNode = {
     'about.txt': {
       type: 'file',
       content: `╔══════════════════════════════════════════╗
-║           NIRANT CHAVDA                  ║
-║      Full-Stack Developer & Hacker       ║
-╚══════════════════════════════════════════╝
+                ║           NIRANT CHAVDA                  ║
+                ║      Full-Stack Developer & Explorer     ║
+                ╚══════════════════════════════════════════╝
 
 Name    : Nirant Chavda
-Role    : Full-Stack Developer
+Role    : Full-Stack Developer | System Explorer
 Based   : India
 Mission : Building impactful software, one commit at a time.
 
