@@ -8,9 +8,10 @@ export const virtualFS: FileNode = {
     'about.txt': {
       type: 'file',
       content: `╔══════════════════════════════════════════╗
-                ║           NIRANT CHAVDA                  ║
-                ║      Full-Stack Developer & Explorer     ║
-                ╚══════════════════════════════════════════╝
+║           NIRANT CHAVDA                  ║
+║      Full-Stack Developer & Explorer     ║
+╚══════════════════════════════════════════╝
+      
 
 Name    : Nirant Chavda
 Role    : Full-Stack Developer | System Explorer
