@@ -37,18 +37,33 @@ registerCommand({
   aliases: ['?'],
   execute: () => {
     const cmds = getAllCommands().filter((c) => !c.name.startsWith('_'));
+    const innerWidth = 59;
+    const nameWidth = 14;
+    const descWidth = innerWidth - 2 - nameWidth - 2;
+
+    const toFixed = (value: string, width: number): string => {
+      if (value.length <= width) return value.padEnd(width);
+      if (width <= 3) return value.slice(0, width);
+      return `${value.slice(0, width - 3)}...`;
+    };
+
+    const boxRow = (content: string): string => `│ ${toFixed(content, innerWidth)} │`;
+
     const lines = [
-      '┌───────────────────────────────────────────────────────────┐',
-      '│                     AVAILABLE COMMANDS                    │',
-      '├───────────────────────────────────────────────────────────┤',
+      `┌${'─'.repeat(innerWidth + 2)}┐`,
+      boxRow('AVAILABLE COMMANDS'.padStart(Math.floor((innerWidth + 'AVAILABLE COMMANDS'.length) / 2))),
+      `├${'─'.repeat(innerWidth + 2)}┤`,
     ];
+
     cmds.forEach((c) => {
-      const name = c.name.padEnd(14);
+      const name = toFixed(c.name, nameWidth);
       const usage = c.usage ? ` ${c.usage}` : '';
-      lines.push(`│  ${name}  ${c.description.substring(0, 38).padEnd(38)}  │`);
-      if (usage) lines.push(`│  ${''.padEnd(14)}  usage: ${usage.trim().substring(0, 34).padEnd(34)}  │`);
+      const desc = toFixed(c.description, descWidth);
+      lines.push(boxRow(`${name}  ${desc}`));
+      if (usage) lines.push(boxRow(`${''.padEnd(nameWidth)}  usage: ${usage.trim()}`));
     });
-    lines.push('└───────────────────────────────────────────────────────────┘');
+
+    lines.push(`└${'─'.repeat(innerWidth + 2)}┘`);
     lines.push('');
     lines.push('Tip: Use ↑↓ for history, Tab for autocomplete, Ctrl+L to clear.');
     lines.push("Tip: Run 'gui' to open the GUI portfolio.");
