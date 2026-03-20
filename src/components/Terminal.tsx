@@ -164,12 +164,7 @@ const Terminal: React.FC = () => {
       addLine({ type: 'input', text: `${getPrompt(getState().currentPath)}${trimmed}` });
       pushHistory(trimmed);
 
-      // Handle "hack the system" as a special multi-word command
-      const hackTheSystem = trimmed.toLowerCase();
-      let parsed = parseCommand(trimmed);
-      if (hackTheSystem === 'hack the system') {
-        parsed = { name: 'hack', args: ['the', 'system'], flags: {}, raw: trimmed };
-      }
+      const parsed = parseCommand(trimmed);
 
       const cmd = getCommand(parsed.name);
       if (!cmd) {
