@@ -1,73 +1,81 @@
-# React + TypeScript + Vite
+# Nirant Chavda — Terminal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A terminal-based portfolio website built with React + TypeScript + Vite that runs entirely in the browser.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Visit: [orpheusdark.github.io](https://orpheusdark.github.io)
 
-## React Compiler
+## ⌨️ Available Commands
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Command | Description |
+|---------|-------------|
+| `help` | List all commands |
+| `about` | Show profile info |
+| `skills` | List technical skills |
+| `projects` | List all projects |
+| `projects --type=ai` | Filter projects by type |
+| `cd projects` | Navigate to projects directory |
+| `ls` | List files in current directory |
+| `cat <file>` | Read a file |
+| `clear` | Clear the terminal |
+| `history` | Show command history |
+| `hireme` | Show contact info |
+| `social` | Show social links |
+| `banner` | Show ASCII art banner |
+| `pwd` | Print working directory |
+| `date` | Show current date/time |
+| `whoami` | Easter egg |
+| `sudo hireme` | Secret hire mode |
+| `hack the system` | Easter egg |
+| `theme <dark\|matrix\|amber>` | Change terminal theme |
+| `matrix` | Enter the Matrix |
+| `neofetch` | System info |
+| `uptime` | Portfolio uptime |
+| `echo <text>` | Echo text |
 
-## Expanding the ESLint configuration
+## ⌨️ Keyboard Shortcuts
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `↑` / `↓` — Navigate command history
+- `Tab` — Autocomplete commands and file paths
+- `Ctrl + L` — Clear terminal
+- `Ctrl + C` — Cancel current input
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🏗️ Architecture
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── core/
+│   ├── parser.ts        # Command parser (name, args, flags)
+│   └── executor.ts      # Command registry & types
+├── commands/
+│   └── system/
+│       ├── commands.ts  # All command implementations
+│       └── filesystem.ts # Virtual file system
+├── components/
+│   └── Terminal.tsx     # Main terminal UI component
+├── store/
+│   └── terminalStore.ts # Simple pub/sub state store
+└── index.css            # Dark terminal theme CSS
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev      # Start development server
+npm run build    # Production build
+npm run lint     # Lint code
 ```
+
+## 🚢 Deployment
+
+The site is automatically deployed to GitHub Pages on push to `main` via the workflow in `.github/workflows/deploy.yml`.
+
+## 🎨 Themes
+
+- `dark` (default) — Classic dark terminal with green prompt
+- `matrix` — Green text on black (Matrix-style)
+- `amber` — Amber/orange retro terminal
+
+Switch themes with: `theme <name>`
