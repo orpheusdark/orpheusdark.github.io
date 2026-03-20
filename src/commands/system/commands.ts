@@ -310,20 +310,26 @@ registerCommand({
 registerCommand({
   name: 'social',
   description: 'Show social media / profile links',
-  execute: () => [
-    {
-      type: 'output',
-      text: `
-┌─────────────────────────────────────────────┐
-│              FIND ME ONLINE                 │
-├─────────────────────────────────────────────┤
-│  🐙 GitHub   : github.com/orpheusdark       │
-│  💼 LinkedIn : linkedin.com/in/orpheusdark  │
-│  📸 Dev.to   : dev.to/orpheusdark           │
-│  🌐 Website  : orpheusdark.github.io        │
-└─────────────────────────────────────────────┘`,
-    },
-  ],
+  execute: () => {
+    const width = 61;
+    const title = 'FIND ME ONLINE';
+    const rows = [
+      'GitHub   : https://github.com/orpheusdark',
+      'LinkedIn : https://linkedin.com/in/orpheusdark',
+      'Dev.to   : https://dev.to/orpheusdark',
+      'Website  : https://orpheusdark.github.io',
+    ];
+
+    const lines = [
+      `┌${'─'.repeat(width + 2)}┐`,
+      `│ ${title.padStart(Math.floor((width + title.length) / 2)).padEnd(width)} │`,
+      `├${'─'.repeat(width + 2)}┤`,
+      ...rows.map((row) => `│ ${row.padEnd(width)} │`),
+      `└${'─'.repeat(width + 2)}┘`,
+    ];
+
+    return [{ type: 'output', text: `\n${lines.join('\n')}` }];
+  },
 });
 
 // ─── GUI ─────────────────────────────────────────────────────────────────────

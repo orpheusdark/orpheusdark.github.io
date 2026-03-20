@@ -131,6 +131,13 @@ body {
   word-break: break-word;
 }
 
+.line-output .line-output-text a,
+.line-system .line-output-text a,
+.line-error .line-output-text a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .line-system .line-output-text {
   color: var(--system);
   font-style: italic;

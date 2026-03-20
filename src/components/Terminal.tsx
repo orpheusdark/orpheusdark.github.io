@@ -30,10 +30,22 @@ function getPrompt(path: string[]): string {
 }
 
 function ansiToSpan(text: string): string {
-  // minimal ANSI colour support (cyan dirs)
-  return text
+  // Escape user-provided text, then apply simple ANSI colour and URL linkification.
+  const escaped = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+  const withAnsi = escaped
     .replace(/\x1b\[36m(.*?)\x1b\[0m/g, '<span class="ansi-cyan">$1</span>')
     .replace(/\x1b\[[0-9;]*m/g, '');
+
+  return withAnsi.replace(
+    /(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+  );
 }
 
 function stripAnsi(text: string): string {
