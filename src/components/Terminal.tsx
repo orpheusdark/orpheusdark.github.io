@@ -219,7 +219,7 @@ const Terminal: React.FC = () => {
         <span className="dot dot-red" />
         <span className="dot dot-yellow" />
         <span className="dot dot-green" />
-        <span className="titlebar-title">nirant@portfolio — terminal</span>
+        <span className="titlebar-title">nirantchavda@portfolio</span>
       </div>
       <div className="terminal-body">
         {state.lines.map((line) => (
