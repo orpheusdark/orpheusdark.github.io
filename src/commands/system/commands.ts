@@ -51,6 +51,7 @@ registerCommand({
     lines.push('└───────────────────────────────────────────────────────────┘');
     lines.push('');
     lines.push('Tip: Use ↑↓ for history, Tab for autocomplete, Ctrl+L to clear.');
+    lines.push("Tip: Run 'gui' to open the GUI portfolio.");
     return [{ type: 'output', text: lines.join('\n') }];
   },
 });
@@ -323,6 +324,19 @@ registerCommand({
 └─────────────────────────────────────────────┘`,
     },
   ],
+});
+
+// ─── GUI ─────────────────────────────────────────────────────────────────────
+registerCommand({
+  name: 'gui',
+  description: 'Open GUI portfolio website',
+  execute: () => {
+    const url = 'https://orpheusdark.github.io/portfolio-gui/';
+    if (typeof window !== 'undefined') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+    return [{ type: 'output', text: `Opening GUI portfolio: ${url}` }];
+  },
 });
 
 // ─── WHOAMI ───────────────────────────────────────────────────────────────────
