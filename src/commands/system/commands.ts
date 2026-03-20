@@ -118,28 +118,28 @@ registerCommand({
         name: 'RIFT-26',
         desc: 'AI-powered document intelligence platform',
         tags: ['ai', 'hackathon'],
-        status: '✓ Completed',
+        status: 'Completed',
       },
       {
         file: 'smart-helmet.txt',
         name: 'Smart Helmet',
         desc: 'IoT smart helmet with crash detection & GPS',
         tags: ['iot', 'hardware'],
-        status: '🔧 In Progress',
+        status: 'In Progress',
       },
       {
         file: 'nexus-os.txt',
         name: 'NexusOS',
         desc: 'Hobby OS kernel written in Rust',
         tags: ['systems', 'rust'],
-        status: '🚀 Active',
+        status: 'Active',
       },
       {
         file: 'devflow.txt',
         name: 'DevFlow',
         desc: 'Developer productivity SaaS platform',
         tags: ['saas', 'devtools'],
-        status: '✓ Completed',
+        status: 'Completed',
       },
     ];
 
@@ -151,19 +151,32 @@ registerCommand({
       return [{ type: 'error', text: `No projects found with type "${typeFilter}"` }];
     }
 
+    const innerWidth = 62;
+    const title = 'PROJECTS';
+
+    const toFixed = (value: string, width: number): string => {
+      if (value.length <= width) return value.padEnd(width);
+      if (width <= 3) return value.slice(0, width);
+      return `${value.slice(0, width - 3)}...`;
+    };
+
+    const boxRow = (content: string): string => `│ ${toFixed(content, innerWidth)} │`;
+
     const lines = [
-      '┌──────────────────────────────────────────────────────────────┐',
-      '│                         PROJECTS                             │',
-      '├──────────────────────────────────────────────────────────────┤',
+      `┌${'─'.repeat(innerWidth + 2)}┐`,
+      boxRow(title.padStart(Math.floor((innerWidth + title.length) / 2))),
+      `├${'─'.repeat(innerWidth + 2)}┤`,
     ];
+
     filtered.forEach((p) => {
-      lines.push(`│  📁 ${p.name.padEnd(16)} ${p.status.padEnd(16)} │`);
-      lines.push(`│     ${p.desc.padEnd(57)} │`);
-      lines.push(`│     Tags: ${p.tags.join(', ').padEnd(51)} │`);
-      lines.push(`│     cat projects/${p.file.padEnd(42)} │`);
-      lines.push('├──────────────────────────────────────────────────────────────┤');
+      lines.push(boxRow(`Project: ${p.name} (${p.status})`));
+      lines.push(boxRow(`Desc   : ${p.desc}`));
+      lines.push(boxRow(`Tags   : ${p.tags.join(', ')}`));
+      lines.push(boxRow(`Open   : cat projects/${p.file}`));
+      lines.push(`├${'─'.repeat(innerWidth + 2)}┤`);
     });
-    lines[lines.length - 1] = '└──────────────────────────────────────────────────────────────┘';
+
+    lines[lines.length - 1] = `└${'─'.repeat(innerWidth + 2)}┘`;
     lines.push('');
     lines.push("Run 'cat projects/<file>' for full details.");
 
