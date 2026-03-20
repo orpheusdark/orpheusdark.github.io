@@ -495,21 +495,32 @@ registerCommand({
   description: 'System information',
   execute: () => [
     {
-      type: 'output',
-      text: `
-         .                    nirant@portfolio
-        /|\\                   ───────────────
-       / | \\                  OS: NirantOS v3.0
-      /  |  \\                 Host: GitHub Pages
-     /   |   \\                Kernel: React 19.0.0
-    /    |    \\               Uptime: Always online
-   /_____|_____\\              Shell: Terminal.tsx
-                              Resolution: your screen
-        [NC]                  Theme: Dark
-                              CPU: Caffeine-powered
-   "Building the future,     Memory: Enough for big dreams
-    one commit at a time."`,
-    },
+  type: 'output',
+  text: `
+ ________   ________      ________  ________      
+|\   ___  \|\   ____\    |\   __  \|\   ____\     
+\ \  \\ \  \ \  \___|    \ \  \|\  \ \  \___|_    
+ \ \  \\ \  \ \  \        \ \  \\\  \ \_____  \   
+  \ \  \\ \  \ \  \____  __\ \  \\\  \|____|\  \  
+   \ \__\\ \__\ \_______\\__\ \_______\____\_\  \ 
+    \|__| \|__|\|_______\|__|\|_______|\_________\
+                                      \|_________|
+        nirant@portfolio
+        ───────────────
+        OS: NirantOS v2.6.5
+        Host: GitHub Pages
+        Kernel: React 19.0.0
+        Uptime: Always online
+        Shell: Terminal.tsx
+        Resolution: your screen
+        Theme: Dark
+        CPU: Caffeine-powered
+        Memory: Enough for big dreams
+
+   "Building the future,
+    one commit at a time."
+`,
+}
   ],
 });
 
