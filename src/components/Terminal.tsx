@@ -20,6 +20,8 @@ import '../commands/system/commands'; // register all commands
 
 const PROMPT_USER = 'nirant';
 const PROMPT_HOST = 'portfolio';
+const TYPEWRITER_TARGET_STEPS = 120;
+const TYPEWRITER_INTERVAL_MS = 16;
 
 function getPrompt(path: string[]): string {
   const p = pathToString(path);
@@ -33,14 +35,21 @@ function ansiToSpan(text: string): string {
     .replace(/\x1b\[[0-9;]*m/g, '');
 }
 
+function stripAnsi(text: string): string {
+  return text.replace(/\x1b\[[0-9;]*m/g, '');
+}
+
 const Terminal: React.FC = () => {
   const [state, setStateLocal] = useState<TerminalState>(getState());
   const [input, setInput] = useState('');
   const [histIdx, setHistIdx] = useState(-1);
   const [savedInput, setSavedInput] = useState('');
   const [autocompleteOptions, setAutocompleteOptions] = useState<string[]>([]);
+  const [typedCounts, setTypedCounts] = useState<Record<string, number>>({});
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const typingTimersRef = useRef<Map<string, number>>(new Map());
+  const typingStartedRef = useRef<Set<string>>(new Set());
 
   // Subscribe to store changes
   useEffect(() => {
@@ -67,7 +76,63 @@ const Terminal: React.FC = () => {
   // Auto-scroll
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [state.lines, typedCounts]);
+
+  // Animate newly added output/system/error lines with a typewriter effect.
+  useEffect(() => {
+    const activeIds = new Set(state.lines.map((line) => line.id));
+
+    typingTimersRef.current.forEach((timer, id) => {
+      if (!activeIds.has(id)) {
+        window.clearInterval(timer);
+        typingTimersRef.current.delete(id);
+        typingStartedRef.current.delete(id);
+      }
+    });
+
+    state.lines.forEach((line) => {
+      if (line.type === 'input' || typingStartedRef.current.has(line.id)) {
+        return;
+      }
+
+      typingStartedRef.current.add(line.id);
+      const plain = stripAnsi(line.text);
+      const totalChars = plain.length;
+
+      setTypedCounts((prev) => ({ ...prev, [line.id]: 0 }));
+
+      if (totalChars === 0) {
+        return;
+      }
+
+      const charsPerTick = Math.max(1, Math.ceil(totalChars / TYPEWRITER_TARGET_STEPS));
+      const timer = window.setInterval(() => {
+        setTypedCounts((prev) => {
+          const current = prev[line.id] ?? 0;
+          const next = Math.min(current + charsPerTick, totalChars);
+
+          if (next >= totalChars) {
+            window.clearInterval(timer);
+            typingTimersRef.current.delete(line.id);
+          }
+
+          return current === next ? prev : { ...prev, [line.id]: next };
+        });
+      }, TYPEWRITER_INTERVAL_MS);
+
+      typingTimersRef.current.set(line.id, timer);
+    });
   }, [state.lines]);
+
+  useEffect(() => {
+    return () => {
+      typingTimersRef.current.forEach((timer) => {
+        window.clearInterval(timer);
+      });
+      typingTimersRef.current.clear();
+      typingStartedRef.current.clear();
+    };
+  }, []);
 
   // Focus input on click anywhere in terminal
   const focusInput = useCallback(() => {
@@ -227,10 +292,21 @@ const Terminal: React.FC = () => {
             {line.type === 'input' ? (
               <span className="line-input-text">{line.text}</span>
             ) : (
+              (() => {
+                const plain = stripAnsi(line.text);
+                const visibleChars = typedCounts[line.id] ?? 0;
+                const isComplete = visibleChars >= plain.length;
+                const visibleText = isComplete
+                  ? line.text
+                  : plain.slice(0, visibleChars);
+
+                return (
               <pre
                 className="line-output-text"
-                dangerouslySetInnerHTML={{ __html: ansiToSpan(line.text) }}
+                dangerouslySetInnerHTML={{ __html: ansiToSpan(visibleText) }}
               />
+                );
+              })()
             )}
           </div>
         ))}
