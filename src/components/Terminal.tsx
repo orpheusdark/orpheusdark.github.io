@@ -22,6 +22,7 @@ const PROMPT_USER = 'nirant';
 const PROMPT_HOST = 'portfolio';
 const TYPEWRITER_TARGET_STEPS = 120;
 const TYPEWRITER_INTERVAL_MS = 16;
+const TYPEWRITER_SPEED = 0.6;
 
 function getPrompt(path: string[]): string {
   const p = pathToString(path);
@@ -105,7 +106,10 @@ const Terminal: React.FC = () => {
         return;
       }
 
-      const charsPerTick = Math.max(1, Math.ceil(totalChars / TYPEWRITER_TARGET_STEPS));
+      const charsPerTick = Math.max(
+        1,
+        Math.ceil((totalChars / TYPEWRITER_TARGET_STEPS) * TYPEWRITER_SPEED)
+      );
       const timer = window.setInterval(() => {
         setTypedCounts((prev) => {
           const current = prev[line.id] ?? 0;
@@ -284,7 +288,7 @@ const Terminal: React.FC = () => {
         <span className="dot dot-red" />
         <span className="dot dot-yellow" />
         <span className="dot dot-green" />
-        <span className="titlebar-title">nirantchavda@portfolio</span>
+        <span className="titlebar-title">nirant@portfolio</span>
       </div>
       <div className="terminal-body">
         {state.lines.map((line) => (
