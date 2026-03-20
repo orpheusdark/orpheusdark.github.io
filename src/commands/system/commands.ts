@@ -25,7 +25,7 @@ registerCommand({
  │               "Code is poetry. Ship it."                 │
  └──────────────────────────────────────────────────────────┘
 
-//  Type 'about' to learn more about me.`,
+`,
     },
   ],
 });
