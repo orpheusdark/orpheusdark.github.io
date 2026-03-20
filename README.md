@@ -27,19 +27,11 @@ Visit: [orpheusdark.github.io](https://orpheusdark.github.io)
 | `date` | Show current date/time |
 | `whoami` | Easter egg |
 | `sudo hireme` | Secret hire mode |
-| `hack the system` | Easter egg |
 | `theme <dark\|matrix\|amber>` | Change terminal theme |
 | `matrix` | Enter the Matrix |
 | `neofetch` | System info |
 | `uptime` | Portfolio uptime |
-| `echo <text>` | Echo text |
 
-## ⌨️ Keyboard Shortcuts
-
-- `↑` / `↓` — Navigate command history
-- `Tab` — Autocomplete commands and file paths
-- `Ctrl + L` — Clear terminal
-- `Ctrl + C` — Cancel current input
 
 ## 🏗️ Architecture
 
