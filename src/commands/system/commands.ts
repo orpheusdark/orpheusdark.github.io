@@ -365,7 +365,7 @@ registerCommand({
   name: 'gui',
   description: 'Open GUI portfolio website',
   execute: () => {
-    const url = 'https://orpheusdark.github.io/portfolio-gui/';
+    const url = 'https://orpheusdark.vercel.app';
     if (typeof window !== 'undefined') {
       window.open(url, '_blank', 'noopener,noreferrer');
     }
