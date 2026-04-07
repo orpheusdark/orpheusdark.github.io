@@ -184,6 +184,7 @@ body {
   font-size: 14px;
   caret-color: var(--cursor);
   width: 100%;
+  min-width: 0;
   padding: 0;
 }
 
@@ -235,9 +236,63 @@ body {
 
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .terminal-wrapper {
+    height: 100svh;
+    height: 100dvh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .terminal-titlebar {
+    padding: 8px 10px;
+  }
+
+  .titlebar-title {
+    margin-left: 6px;
+    font-size: 11px;
+  }
+
   .terminal-body {
+    overflow-x: hidden;
     padding: 10px 12px 6px;
     font-size: 12px;
+  }
+
+  .line {
+    max-width: 100%;
+  }
+
+  .line-input .line-input-text {
+    overflow-wrap: anywhere;
+  }
+
+  .line-output .line-output-text,
+  .line-system .line-output-text,
+  .line-error .line-output-text {
+    overflow-wrap: anywhere;
+    max-width: 100%;
+  }
+
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2px;
+    align-items: start;
+    max-width: 100%;
+  }
+
+  .prompt {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .input-container {
+    width: 100%;
   }
 
   .prompt,

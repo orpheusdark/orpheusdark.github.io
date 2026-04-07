@@ -324,7 +324,7 @@ const Terminal: React.FC = () => {
 
         {/* Active input row */}
         <div className="input-row">
-          <span className="prompt">{getPrompt(state.currentPath)}</span>
+          <span className="prompt" title={getPrompt(state.currentPath)}>{getPrompt(state.currentPath)}</span>
           <div className="input-container">
             <input
               ref={inputRef}
